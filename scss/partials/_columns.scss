@@ -1,0 +1,8 @@
+.columns {
+    height: 100%;
+    display: flex;
+
+    &__element {
+        flex-grow: 1;
+    }
+}

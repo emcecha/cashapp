@@ -1,0 +1,25 @@
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.button {
+    color: $buttonFontColor;
+    box-shadow: -5px 5px 0 black;
+    width: 200px;
+    height: 100px;
+    font-size: $mainButtonFontSize;
+    transition: background-color 200ms, color 200ms;
+
+    &--caution {
+        background-color: $logoFiveColor;
+        border: 5px solid $logoFiveColor;
+        // border-top: 5px solid $logoFiveColor;
+
+        &:hover {
+            background-color: white;
+            color: $logoFiveColor;
+        }
+    }
+}

@@ -7,25 +7,19 @@ import {
     Link,
     NavLink
 } from "react-router-dom";
-import styles from "../scss/main.scss"
+import styles from "../scss/main.scss";
+import LandingPage from "./_landing_page.jsx";
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    class Main extends React.Component {
-        render() {
-            return(
-                <div>Jedz warzywa.</div>
-            );
-        }
-    }
 
     class App extends React.Component {
         render() {
             return(
                 <HashRouter>
-                    <div>
-                        <Route exact path="/" component={ Main } />
-                    </div>
+                    <Switch>
+                        <Route exact path="/" component={ LandingPage } />
+                        
+                    </Switch>
                 </HashRouter>
             );
         }

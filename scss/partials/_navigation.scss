@@ -1,0 +1,81 @@
+.navigation {
+
+    width: 100%;
+    position: sticky;
+
+    &__icon {
+        width: 40px;
+        height: 30px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    &__stripe {
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: $logoFiveColor;
+
+        &--top {
+            top: 0;
+            left: 0;
+            transform-origin: left;
+            transition: transform 200ms ease-in-out 200ms, width 200ms ease-in-out 200ms;
+        }
+
+        &--middle {
+            top: 50%;
+            left: 0;
+            transition: width 200ms ease-in-out, left 200ms ease-in-out;
+        }
+
+        &--bottom {
+            top: 100%;
+            left: 0;
+            transform-origin: left;
+            transition: transform 200ms ease-in-out 200ms, width 200ms ease-in-out 200ms;
+        }
+
+        .navigation.show &--top {
+            transform: rotate(38deg);
+            width: 120%;
+        }
+
+        .navigation.show &--middle {
+            width: 0;
+            left: 50%;
+        }
+
+        .navigation.show &--bottom {
+            transform: rotate(-38deg);
+            width: 120%;
+        }
+    }
+
+    &__list {
+        background-color: $logoOneColor;
+        font-size: $mobileFontSize;
+        color: $buttonFontColor;
+        opacity: 0.9;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        transform: translateX(-100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: transform 400ms ease-in-out;
+
+        .navigation.show & {
+            transform: translateX(0);
+        }
+    }
+
+    &__item {
+        text-align: center;
+        padding: 10px;
+    }
+}
