@@ -1,0 +1,41 @@
+.section {
+
+    padding: 15px;
+    text-align: center;
+
+    &__item {
+        border-bottom: 3px solid black;
+        margin-bottom: 50px;
+    }
+
+    &__title {
+        font-size: $titleFontSize;
+        font-weight: 700;
+        padding-bottom: 15px;
+        border-bottom: 3px solid black;
+        margin-bottom: 50px;
+    }
+
+    &__img {
+        height: 200px;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: center;
+        margin-bottom: 30px;
+    }
+
+    &__text-box {
+        background-color: $containerBgColor;
+        padding: 30px 15px;
+    }
+
+    &__lead {
+        font-size: $mobileFontSize;
+        font-weight: 700;
+    }
+
+    &__text {
+        font-size: $mobileFontSize;
+        padding-top: 15px;
+    }
+}
