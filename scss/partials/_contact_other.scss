@@ -1,0 +1,35 @@
+.contact-other {
+
+    &__text-box {
+        background-color: $containerBgColor;
+        border-bottom: 3px solid black;
+        padding: 30px 15px;
+        margin-bottom: 30px;
+    }
+
+    &__lead {
+        font-size: $mobileFontSize;
+        font-weight: 700;
+    }
+
+    &__text {
+        font-size: $mobileFontSize;
+        padding-top: 15px;
+    }
+
+    &__link-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    &__link {
+        margin: 0 5px;
+        width: 80px;
+        height: 80px;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}

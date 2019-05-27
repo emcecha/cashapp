@@ -1,0 +1,30 @@
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    background-color: $containerBgColor;
+    padding-top: 30px;
+
+    &__label {
+        font-size: $mobileFontSize;
+        margin: 0 15px 5px;
+    }
+
+    &__input {
+        margin: 0 15px 30px;
+        padding: 10px;
+        font-size: $inputFontSize;
+        border: none;
+        border-top: 3px solid black;
+
+        &--textarea {
+            height: 200px;
+            resize: none;
+        }
+    }
+
+    &__button-box {
+        background-color: white;
+        padding: 30px 30px 50px;
+        border-top: 3px solid black;
+    }
+}

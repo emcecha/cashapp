@@ -1,5 +1,4 @@
 .contact {
-
     text-align: center;
     padding: 0 15px;
 
@@ -8,13 +7,6 @@
         font-weight: 700;
         padding-bottom: 15px;
         margin-bottom: 50px;
-        border-bottom: 3px solid black;
-    }
-
-    &__form {
-        display: flex;
-        flex-direction: column;
-        background-color: $containerBgColor;
         border-bottom: 3px solid black;
     }
 }
