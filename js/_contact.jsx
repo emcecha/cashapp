@@ -6,7 +6,10 @@ class Contact extends React.Component {
 
     render() {
         return(
-            <section className="contact">
+            <section
+                className="contact"
+                id={ this.props.id }
+            >
                 <h2 className="contact__title">
                     CONTACT
                 </h2>

@@ -10,7 +10,7 @@ class Navigation extends React.Component {
         }
     }
 
-    handleItemClick = () => {
+    handleHamburgerClick = () => {
 
         if (this.state.show) {
 
@@ -26,6 +26,18 @@ class Navigation extends React.Component {
         }
     }
 
+    handleItemClick = (e) => {
+
+        let id = e.target.dataset.id;
+        let sectionPosition = document.getElementById(id).offsetTop - 50;
+
+        this.setState({
+            show: false
+        });
+
+        window.scrollTo(0,sectionPosition);
+    }
+
     render() {
         return(
 
@@ -34,18 +46,25 @@ class Navigation extends React.Component {
             >
                 <div
                     className="navigation__icon"
-                    onClick={ this.handleItemClick }
+                    onClick={ this.handleHamburgerClick }
                 >
                     <div className="navigation__stripe navigation__stripe--top"></div>
                     <div className="navigation__stripe navigation__stripe--middle"></div>
                     <div className="navigation__stripe navigation__stripe--bottom"></div>
                 </div>
                 <ul className="navigation__list">
-                    <li className="navigation__item">Home</li>
-                    <li className="navigation__item">App</li>
-                    <li className="navigation__item">Benefits</li>
-                    <li className="navigation__item">Creator</li>
-                    <li className="navigation__item">Contact</li>
+                    { this.props.navItems.map((el,index) => {
+                        return(
+                            <li
+                                className="navigation__item"
+                                key={ el.name }
+                                data-id={ el.id }
+                                onClick={ this.handleItemClick }
+                            >
+                                { el.name }
+                            </li>
+                        );
+                    }) }
                 </ul>
             </nav>
         );

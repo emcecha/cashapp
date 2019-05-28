@@ -9,11 +9,14 @@ class Hero extends React.Component {
     render() {
 
         return(
-            <div className="hero">
+            <div
+                className="hero"
+                id="home"
+            >
                 <div className="hero__top">
-                    <Navigation />
-                    <Header showSubtitle={ this.props.showSubtitle }/>
-                    <ActionField address={ this.props.address }/>
+                    <Navigation navItems={ this.props.navItems } />
+                    <Header showSubtitle={ this.props.showSubtitle } />
+                    <ActionField address={ this.props.address } />
                 </div>
                 <div className="hero__bottom">
                     <DecorationColumns

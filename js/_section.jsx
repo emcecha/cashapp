@@ -5,7 +5,10 @@ class Section extends React.Component {
     render() {
 
         return(
-            <section className="section">
+            <section
+                className="section"
+                id={ this.props.id }
+            >
                 <h2 className="section__title">
                     { this.props.content.title }
                 </h2>

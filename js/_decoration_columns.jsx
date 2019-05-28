@@ -6,7 +6,7 @@ class DecorationColumns extends React.Component {
 
         let columnsElements = this.props.columnsParams.map((el,index) => {
 
-            let style = {
+            let columnStyle = {
                 height: el.height,
                 backgroundColor: el.color
             }
@@ -14,16 +14,23 @@ class DecorationColumns extends React.Component {
             return(
                 <div
                     key={ index }
-                    style={ style }
+                    style={ columnStyle }
                     className="columns__element">
                 </div>
             );
 
         });
 
+        let alignStyle;
+        if (this.props.upsidedown) {
+            alignStyle = "flex-start";
+        } else {
+            alignStyle = "flex-end"
+        }
+
         return(
             <div
-                style={ {alignItems: "flex-end"} }
+                style={ {alignItems: alignStyle} }
                 className="columns"
             >
                 { columnsElements }

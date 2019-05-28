@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "./_hero.jsx";
+import Spacer from "./_spacer.jsx";
 import Section from "./_section.jsx";
 import Contact from "./_contact.jsx";
 import Footer from "./_footer.jsx"
@@ -51,11 +52,35 @@ class LandingPage extends React.Component {
             {
                 height: "130px",
                 color: "#ED553B"
+            }
+        ];
+
+        let columnsSpacer = [
+            {
+                height: "70px",
+                color: "#173F5F"
             },
+            {
+                height: "110px",
+                color: "#20639B"
+            },
+            {
+                height: "50px",
+                color: "#3CAEA3"
+            },
+            {
+                height: "80px",
+                color: "#F6D55C"
+            },
+            {
+                height: "130px",
+                color: "#ED553B"
+            }
         ];
 
         let aboutAppContent = {
             title: "What's it all ABOUT?",
+            id: "aboutApp",
             items: [
                 {
                     imgUrl: "../img/list_icon.svg",
@@ -77,6 +102,7 @@ class LandingPage extends React.Component {
 
         let benefitsContent = {
             title: "Why? BENEFITS.",
+            id: "benefits",
             items: [
                 {
                     imgUrl: "../img/one_place_icon.svg",
@@ -93,6 +119,7 @@ class LandingPage extends React.Component {
 
         let aboutCreatorContent = {
             title: "About CREATOR",
+            id: "aboutCreator",
             items: [
                 {
                     imgUrl: "../img/me_icon.svg",
@@ -102,17 +129,51 @@ class LandingPage extends React.Component {
             ]
         }
 
+        let navItems = [
+            {
+                name: "Home",
+                id: "home"
+            },
+            {
+                name: "About App",
+                id: "aboutApp"
+            },
+            {
+                name: "Benefits",
+                id: "benefits"
+            },
+            {
+                name: "Creator",
+                id: "aboutCreator"
+            },
+            {
+                name: "Contact",
+                id: "contact"
+            }
+        ]
+
         return(
-            <div>
+            <div className="landing-page">
                 <Hero
                     address="landing page"
                     showSubtitle={ true }
                     columnsParams={ columnsHero }
+                    navItems={ navItems }
                 />
-                <Section content={ aboutAppContent } />
-                <Section content={ benefitsContent } />
-                <Section content={ aboutCreatorContent } />
-                <Contact />
+                <Spacer columnsParams={ columnsSpacer }/>
+                <Section
+                    content={ aboutAppContent }
+                    id="aboutApp"
+                />
+                <Section
+                    content={ benefitsContent }
+                    id="benefits"
+                />
+                <Section
+                    content={ aboutCreatorContent }
+                    id="aboutCreator"
+                />
+                <Contact id="contact" />
                 <Footer columnsParams={ columnsFooter } />
             </div>
         );
