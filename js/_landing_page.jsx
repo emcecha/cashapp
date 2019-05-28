@@ -2,12 +2,13 @@ import React from "react";
 import Hero from "./_hero.jsx";
 import Section from "./_section.jsx";
 import Contact from "./_contact.jsx";
+import Footer from "./_footer.jsx"
 
 class LandingPage extends React.Component {
 
     render() {
 
-        let columnsLandingPage = [
+        let columnsHero = [
             {
                 height: "130%",
                 color: "#173F5F"
@@ -26,6 +27,29 @@ class LandingPage extends React.Component {
             },
             {
                 height: "80%",
+                color: "#ED553B"
+            },
+        ];
+
+        let columnsFooter = [
+            {
+                height: "70px",
+                color: "#173F5F"
+            },
+            {
+                height: "110px",
+                color: "#20639B"
+            },
+            {
+                height: "50px",
+                color: "#3CAEA3"
+            },
+            {
+                height: "80px",
+                color: "#F6D55C"
+            },
+            {
+                height: "130px",
                 color: "#ED553B"
             },
         ];
@@ -83,12 +107,13 @@ class LandingPage extends React.Component {
                 <Hero
                     address="landing page"
                     showSubtitle={ true }
-                    columnsParams={ columnsLandingPage }
+                    columnsParams={ columnsHero }
                 />
                 <Section content={ aboutAppContent } />
                 <Section content={ benefitsContent } />
                 <Section content={ aboutCreatorContent } />
                 <Contact />
+                <Footer columnsParams={ columnsFooter } />
             </div>
         );
 

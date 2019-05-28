@@ -1,0 +1,14 @@
+.footer {
+    position: relative;
+
+    &__text {
+        text-align: center;
+        width: 80%;
+        font-size: $inputFontSize;
+        color: white;
+        position: absolute;
+        left: 50%;
+        bottom: 15px;
+        transform: translateX(-50%);
+    }
+}

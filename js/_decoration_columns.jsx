@@ -12,7 +12,10 @@ class DecorationColumns extends React.Component {
             }
 
             return(
-                <div key={ index } style={ style } className="columns__element">
+                <div
+                    key={ index }
+                    style={ style }
+                    className="columns__element">
                 </div>
             );
 

@@ -38,6 +38,7 @@ class ContactOther extends React.Component {
                                 href={ el.href }
                                 style={ {backgroundImage: `url(${ el.iconUrl })`} }
                                 className="contact-other__link"
+                                key={ index }
                             >
                             </a>
                         );
