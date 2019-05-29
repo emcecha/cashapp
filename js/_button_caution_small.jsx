@@ -1,6 +1,6 @@
 import React from "react";
 
-class ButtonCaution extends React.Component {
+class ButtonCautionSmall extends React.Component {
 
     handleButtonClick = (e) => {
 
@@ -15,7 +15,7 @@ class ButtonCaution extends React.Component {
 
         return(
             <button
-                className="button button--caution"
+                className="button button--caution button--small"
                 onClick={ this.handleButtonClick }
             >
                 { this.props.text }
@@ -24,4 +24,4 @@ class ButtonCaution extends React.Component {
     }
 }
 
-export default ButtonCaution;
+export default ButtonCautionSmall;

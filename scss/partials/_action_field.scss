@@ -1,7 +1,43 @@
 .action-field {
 
+    &__button-box {
+        text-align: center;
+    }
+
+    &__text {
+        font-size: $mobileFontSize;
+        padding-bottom: 5px;
+    }
+
+    &--start,
+    &--register,
+    &--login {
+        height: calc(100% - 110px);
+        padding: 0px 15px 30px;
+    }
+
     &--landing {
         padding: 50px 15px;
         text-align: right;
+    }
+
+    &--start {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .button--back {
+            margin-top: 15px;
+            position: relative;
+            right: 25px;
+        }
+    }
+
+    &--register {
+
+        .button--back {
+            margin-top: 15px;
+        }
     }
 }

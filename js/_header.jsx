@@ -6,7 +6,7 @@ class Header extends React.Component {
 
         super(props);
         this.state = {
-            showSubtitle: true
+            showSubtitle: this.props.showSubtitle
         }
     }
 

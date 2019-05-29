@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import styles from "../scss/main.scss";
 import LandingPage from "./_landing_page.jsx";
+import StartPage from "./_start_page.jsx";
+import RegisterPage from "./_register_page.jsx";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -18,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <HashRouter>
                     <Switch>
                         <Route exact path="/" component={ LandingPage } />
-                        
+                        <Route exact path="/start" component={ StartPage } />
+                        <Route exact path="/start/register" component= { RegisterPage } />
                     </Switch>
                 </HashRouter>
             );

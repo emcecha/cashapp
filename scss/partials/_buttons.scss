@@ -7,7 +7,7 @@ button {
 .button {
     color: $buttonFontColor;
     box-shadow: -5px 5px 0 black;
-    width: 200px;
+    width: 190px;
     height: 100px;
     font-size: $mainButtonFontSize;
     transition: background-color 200ms, color 200ms;
@@ -15,11 +15,36 @@ button {
     &--caution {
         background-color: $logoFiveColor;
         border: 5px solid $logoFiveColor;
-        // border-top: 5px solid $logoFiveColor;
 
         &:hover {
             background-color: white;
             color: $logoFiveColor;
         }
+    }
+
+    &--accept {
+        background-color: $logoTwoColor;
+        border: 5px solid $logoTwoColor;
+
+        &:hover {
+            background-color: white;
+            color: $logoTwoColor;
+        }
+    }
+
+    &--back {
+        background-color: $logoFourColor;
+        border: 5px solid $logoFourColor;
+
+        &:hover {
+            background-color: white;
+            color: $logoFourColor;
+        }
+    }
+
+    &--small {
+        width: 140px;
+        height: 75px;
+        font-size: $mobileFontSize;
     }
 }

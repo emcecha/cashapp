@@ -14,7 +14,9 @@ class Hero extends React.Component {
                 id="home"
             >
                 <div className="hero__top">
-                    <Navigation navItems={ this.props.navItems } />
+                    { this.props.address === "landing page" ?
+                        <Navigation navItems={ this.props.navItems } /> : null
+                    }
                     <Header showSubtitle={ this.props.showSubtitle } />
                     <ActionField address={ this.props.address } />
                 </div>

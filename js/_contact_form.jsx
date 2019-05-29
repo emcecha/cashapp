@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonCaution from "./_button_caution.jsx";
+import ButtonCautionSmall from "./_button_caution_small.jsx";
 
 class ContactForm extends React.Component {
 
@@ -27,7 +27,7 @@ class ContactForm extends React.Component {
     }
 
     render() {
-        
+
         return(
             <form className="contact-form">
                 <label className="contact-form__label">Email</label>
@@ -47,7 +47,7 @@ class ContactForm extends React.Component {
                 >
                 </textarea>
                 <div className="contact-form__button-box">
-                    <ButtonCaution text="SEND" />
+                    <ButtonCautionSmall text="SEND" />
                 </div>
             </form>
         );
