@@ -1,0 +1,81 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    background-color: $containerBgColor;
+    padding-top: 15px;
+
+    @media (min-width: 800px) {
+        width: 75%;
+        padding-top: 5%;
+    }
+
+    &__input-box {
+        display: flex;
+        flex-direction: column;
+
+        @media (min-width: 800px) {
+            flex-direction: row;
+        }
+    }
+
+    &__label {
+        font-size: $mobileFontSize;
+        margin: 0 15px 5px;
+        text-align: left;
+        padding-left: 2%;
+
+        @media (min-width: 800px) {
+            margin: 0 2%;
+            width: 40%;
+            text-align: right;
+        }
+    }
+
+    &__input {
+        margin: 0 15px 15px;
+        padding: 5px;
+        font-size: $inputFontSize;
+        border: none;
+        border-top: 3px solid black;
+
+        @media (min-width: 800px) {
+            width: 60%;
+            margin: 0 5% 5%;
+            padding: 2%;
+        }
+
+        &--textarea {
+            height: 200px;
+            resize: none;
+        }
+    }
+
+    &__button-box {
+        background-color: white;
+        padding: 15px 0 50px;
+        border-top: 3px solid black;
+
+        @media (min-width: 800px) {
+            padding: 5% 0 15%;
+        }
+
+        &--flex {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0 0;
+
+            @media (min-width: 800px) {
+                justify-content: flex-end;
+                padding: 2% 0 0;
+            }
+        }
+    }
+
+    .button--back {
+        margin: 0 0 0 5px;
+
+        @media (min-width: 800px) {
+            margin: 0 5px 0 5px;
+        }
+    }
+}

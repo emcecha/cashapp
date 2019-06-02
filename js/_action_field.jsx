@@ -2,26 +2,26 @@ import React from "react";
 import ButtonCaution from "./_button_caution.jsx";
 import ButtonAccept from "./_button_accept.jsx";
 import ButtonBackSmall from "./_button_back_small.jsx";
+import FormRegister from "./_form_register.jsx";
+import FormLogIn from "./_form_login.jsx";
 import {Link} from 'react-router-dom';
 
 class ActionField extends React.Component {
 
     render() {
 
-        if (this.props.address === "landing page") {
+        if (this.props.address === "landing") {
 
             return(
                 <div className="action-field action-field--landing">
                     <Link to="/start">
-                        <ButtonCaution
-                            text="START"
-                        />
+                        <ButtonCaution text="START" />
                     </Link>
                 </div>
             );
         }
 
-        if (this.props.address === "start page") {
+        if (this.props.address === "start") {
 
             return(
                 <div className="action-field action-field--start">
@@ -35,9 +35,11 @@ class ActionField extends React.Component {
                     </div>
                     <div className="action-field__button-box">
                         <p className="action-field__text">
-                            If you a have an account
+                            If you have an account
                         </p>
-                        <ButtonAccept text="LOG IN" />
+                        <Link to="/start/login">
+                            <ButtonAccept text="LOG IN" />
+                        </Link>
                     </div>
                     <div className="action-field__button-box">
                         <Link to="/">
@@ -48,18 +50,20 @@ class ActionField extends React.Component {
             );
         }
 
-        if (this.props.address === "register page") {
+        if (this.props.address === "register") {
 
             return(
                 <div className="action-field action-field--register">
-                    <div className="action-field__button-box">
-                        <Link to="/start/register">
-                            <ButtonCaution text="REGISTER" />
-                        </Link>
-                        <Link to="/start">
-                            <ButtonBackSmall text="BACK" />
-                        </Link>
-                    </div>
+                    <FormRegister />
+                </div>
+            );
+        }
+
+        if (this.props.address === "login") {
+
+            return(
+                <div className="action-field action-field--login">
+                    <FormLogIn />
                 </div>
             );
         }

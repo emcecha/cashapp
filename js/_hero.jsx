@@ -1,5 +1,4 @@
 import React from "react";
-import Navigation from "./_navigation.jsx";
 import Header from "./_header.jsx";
 import ActionField from "./_action_field.jsx";
 import DecorationColumns from "./_decoration_columns.jsx"
@@ -8,15 +7,18 @@ class Hero extends React.Component {
 
     render() {
 
+        let classMod;
+        if (this.props.address === "landing") { classMod = "hero--landing"; };
+        if (this.props.address === "start") { classMod = "hero--st-reg-log"; };
+        if (this.props.address === "register") { classMod = "hero--st-reg-log"; };
+        if (this.props.address === "login") { classMod = "hero--st-reg-log"; };
+
         return(
             <div
-                className="hero"
+                className={`hero ${classMod}`}
                 id="home"
             >
-                <div className="hero__top">
-                    { this.props.address === "landing page" ?
-                        <Navigation navItems={ this.props.navItems } /> : null
-                    }
+                <div className="hero__top container">
                     <Header showSubtitle={ this.props.showSubtitle } />
                     <ActionField address={ this.props.address } />
                 </div>

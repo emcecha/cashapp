@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "./_hero.jsx";
 
-class RegisterPage extends React.Component {
+class LogInPage extends React.Component {
     render() {
 
         let columnsRegister = [
@@ -30,7 +30,7 @@ class RegisterPage extends React.Component {
         return(
             <div className="page">
                 <Hero
-                    address="register"
+                    address="login"
                     columnsParams={ columnsRegister }
                 />
             </div>
@@ -38,4 +38,4 @@ class RegisterPage extends React.Component {
     }
 }
 
-export default RegisterPage;
+export default LogInPage;

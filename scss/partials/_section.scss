@@ -1,19 +1,73 @@
 .section {
-
-    padding: 0 15px;
     text-align: center;
 
+    &__items {
+
+        @media (min-width: 800px) {
+
+            &--about-app {
+                display: flex;
+                justify-content: space-between;
+
+                .section__item {
+                    width: 30%;
+                }
+            }
+
+            &--benefits,
+            &--creator {
+
+                .section__item {
+                    display: flex;
+                    flex-direction: row;
+
+                    &--odd {
+                        flex-direction: row-reverse;
+
+                        .section__img {
+                            margin: 0 0 0 5%;
+                        }
+
+                        .section__text-box {
+                            width: 60%;
+                            text-align: right;
+                        }
+                    }
+                }
+
+                .section__img {
+                    min-width: 335px;
+                    height: 400px;
+                    margin: 0 5% 0 0;
+                }
+
+                .section__text-box {
+                    width: 60%;
+                    text-align: left;
+                    padding-left: 5%;
+                    padding-right: 5%;
+                }
+            }
+        }
+    }
+
     &__item {
-        border-bottom: 3px solid black;
-        margin-bottom: 50px;
+        margin-bottom: 10%;
+        display: flex;
+        flex-direction: column;
     }
 
     &__title {
         font-size: $titleFontSize;
         font-weight: 700;
-        padding-bottom: 15px;
+        padding-bottom: 2%;
         border-bottom: 3px solid black;
-        margin-bottom: 50px;
+        margin-bottom: 5%;
+
+        @media (min-width: 800px) {
+            text-align: left;
+            font-size: 50px;
+        }
     }
 
     &__img {
@@ -21,21 +75,27 @@
         background-repeat: no-repeat;
         background-size: auto 100%;
         background-position: center;
-        margin-bottom: 30px;
+        margin-bottom: 5%;
     }
 
     &__text-box {
         background-color: $containerBgColor;
-        padding: 30px 15px;
+        padding: 10% 5%;
+        flex-grow: 1;
+        border-bottom: 3px solid black;
     }
 
     &__lead {
         font-size: $mobileFontSize;
         font-weight: 700;
+
+        @media (min-width: 800px) {
+            margin-bottom: 5%;
+        }
     }
 
     &__text {
         font-size: $mobileFontSize;
-        padding-top: 15px;
+        padding-top: 5%;
     }
 }

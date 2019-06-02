@@ -1,16 +1,29 @@
 .header {
+    @media (min-width: 800px) {
+        width: 33%;
+    }
 
     &__title {
         color: $logoTwoColor;
         font-size: 60px;
         font-weight: 900;
         text-shadow: -3px 3px 0 $logoFourColor;
-        padding: 30px 15px 5px;
+        margin-bottom: 10px;
+
+        @media (min-width: 800px) {
+            font-size: 120px;
+            text-shadow: -7px 7px 0 $logoFourColor;
+            position: relative;
+            z-index: 1;
+        }
     }
 
     &__subtitle {
         font-size: 35px;
         font-weight: 400;
-        padding: 5px 15px 5px;
+
+        @media (min-width: 800px) {
+            font-size: 50px;
+        }
     }
 }

@@ -2,9 +2,37 @@ import React from "react";
 
 class DecorationColumns extends React.Component {
 
+    constructor(props) {
+
+        super(props);
+        this.state = {
+            iterations: 1
+        }
+    }
+
+    getIterationsCount = () => {
+        let screenSize = window.innerWidth;
+        if (screenSize >= 800) {
+            this.setState({
+                iterations: 4
+            });
+        } else {
+            this.setState({
+                iterations: 1
+            });
+        }
+    }
+
     render() {
 
-        let columnsElements = this.props.columnsParams.map((el,index) => {
+        let newColumnsParams = [];
+
+        for (let i = 0; i < this.state.iterations; i++) {
+            let columnsParams = [...this.props.columnsParams];
+            newColumnsParams = [...newColumnsParams,...columnsParams];
+        }
+
+        let columnsElements = newColumnsParams.map((el,index) => {
 
             let columnStyle = {
                 height: el.height,
@@ -39,6 +67,16 @@ class DecorationColumns extends React.Component {
 
     }
 
+    componentDidMount() {
+
+        this.getIterationsCount();
+        window.addEventListener("resize", this.getIterationsCount);
+    }
+
+    componentWillUnmount() {
+
+        window.removeEventListener("resize", this.getIterationsCount);
+    }
 }
 
 export default DecorationColumns;

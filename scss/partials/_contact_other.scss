@@ -1,31 +1,51 @@
 .contact-other {
 
+    @media (min-width: 800px) {
+        width: 47.5%;
+    }
+
     &__text-box {
         background-color: $containerBgColor;
         border-bottom: 3px solid black;
-        padding: 30px 15px;
-        margin-bottom: 30px;
+        padding: 8% 5%;
+        margin-bottom: 8%;
+
+        @media (min-width: 800px) {
+            height: 410px;
+            border: none;
+            margin-bottom: 0;
+            text-align: left;
+        }
     }
 
     &__lead {
         font-size: $mobileFontSize;
         font-weight: 700;
+
+        @media (min-width: 800px) {
+            margin-bottom: 5%;
+        }
     }
 
     &__text {
         font-size: $mobileFontSize;
-        padding-top: 15px;
+        padding-top: 5%;
     }
 
     &__link-box {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 30px;
+        margin-bottom: 8%;
+
+        @media (min-width: 800px) {
+            border-top: 3px solid black;
+            padding-top: 5%;
+        }
     }
 
     &__link {
-        margin: 0 5px;
+        margin: 0 2%;
         width: 80px;
         height: 80px;
         background-size: 100% auto;

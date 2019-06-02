@@ -1,12 +1,50 @@
 .contact {
     text-align: center;
-    padding: 0 15px;
+
+    &__container {
+
+        @media (min-width: 800px) {
+            display: flex;
+            justify-content: space-between;
+
+            .form {
+                width: 47.5%;
+                padding-top: 0;
+
+                .form__input-box {
+                    height: 410px;
+                    padding-top: 8%;
+                    display: block;
+                }
+
+                .form__input--textarea {
+                    margin-bottom: 0;
+                }
+
+                .form__label {
+                    margin: 0 5% 2%;
+                    padding: 0;
+                    display: block;
+                    text-align: left;
+                }
+
+                .form__input {
+                    width: 90%;
+                }
+            }
+        }
+    }
 
     &__title {
         font-size: $titleFontSize;
         font-weight: 700;
-        padding-bottom: 15px;
-        margin-bottom: 50px;
+        padding-bottom: 2%;
+        margin-bottom: 5%;
         border-bottom: 3px solid black;
+
+        @media (min-width: 800px) {
+            font-size: 50px;
+            text-align: left;
+        }
     }
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import Navigation from "./_navigation.jsx";
 import Hero from "./_hero.jsx";
 import Spacer from "./_spacer.jsx";
 import Section from "./_section.jsx";
@@ -11,7 +12,7 @@ class LandingPage extends React.Component {
 
         let columnsHero = [
             {
-                height: "130%",
+                height: "100%",
                 color: "#173F5F"
             },
             {
@@ -29,7 +30,7 @@ class LandingPage extends React.Component {
             {
                 height: "80%",
                 color: "#ED553B"
-            },
+            }
         ];
 
         let columnsFooter = [
@@ -81,6 +82,7 @@ class LandingPage extends React.Component {
         let aboutAppContent = {
             title: "What's it all ABOUT?",
             id: "aboutApp",
+            sectionMod: "section__items--about-app",
             items: [
                 {
                     imgUrl: "../img/list_icon.svg",
@@ -103,6 +105,7 @@ class LandingPage extends React.Component {
         let benefitsContent = {
             title: "Why? BENEFITS.",
             id: "benefits",
+            sectionMod: "section__items--benefits",
             items: [
                 {
                     imgUrl: "../img/one_place_icon.svg",
@@ -120,6 +123,7 @@ class LandingPage extends React.Component {
         let aboutCreatorContent = {
             title: "About CREATOR",
             id: "aboutCreator",
+            sectionMod: "section__items--creator",
             items: [
                 {
                     imgUrl: "../img/me_icon.svg",
@@ -153,10 +157,10 @@ class LandingPage extends React.Component {
         ]
 
         return(
-            <div className="landing-page">
+            <div className="page">
+                <Navigation navItems={ navItems } />
                 <Hero
-                    address="landing page"
-                    showSubtitle={ true }
+                    address="landing"
                     columnsParams={ columnsHero }
                     navItems={ navItems }
                 />

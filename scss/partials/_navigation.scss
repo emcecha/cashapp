@@ -4,14 +4,23 @@
     position: fixed;
     z-index: 1;
 
+    @media (min-width: 800px) {
+        position: sticky;
+        top: 10%;
+    }
+
     &__icon {
         width: 33px;
         height: 25px;
-        position: absolute;
+        right: 5%;
         top: 15px;
-        right: 15px;
+        position: absolute;
         cursor: pointer;
         z-index: 2;
+
+        @media (min-width: 800px) {
+            display: none;
+        }
     }
 
     &__stripe {
@@ -69,6 +78,17 @@
         justify-content: center;
         transition: transform 400ms ease-in-out;
 
+        @media (min-width: 800px) {
+            transform: translateX(0);
+            width: auto;
+            height: auto;
+            top: 0;
+            right: 10%;
+            color: black;
+            background-color: rgba(255,255,255,0.8);
+            font-size: 30px;
+        }
+
         .navigation.show & {
             transform: translateX(0);
         }
@@ -78,5 +98,9 @@
         text-align: center;
         padding: 10px;
         cursor: pointer;
+
+        @media (min-width: 800px) {
+            text-align: left;
+        }
     }
 }

@@ -6,32 +6,31 @@ class StartPage extends React.Component {
 
         let columnsStart = [
             {
-                height: "50%",
+                height: "100%",
                 color: "#173F5F"
             },
             {
-                height: "85%",
+                height: "75%",
                 color: "#20639B"
             },
             {
-                height: "40%",
+                height: "90%",
                 color: "#3CAEA3"
             },
             {
-                height: "60%",
+                height: "55%",
                 color: "#F6D55C"
             },
             {
-                height: "95%",
+                height: "80%",
                 color: "#ED553B"
             }
         ];
 
         return(
-            <div className="start-pages">
+            <div className="page">
                 <Hero
-                    address="start page"
-                    showSubtitle={ false }
+                    address="start"
                     columnsParams={ columnsStart }
                 />
             </div>

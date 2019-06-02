@@ -1,4 +1,5 @@
 .action-field {
+    flex-grow: 1;
 
     &__button-box {
         text-align: center;
@@ -9,32 +10,82 @@
         padding-bottom: 5px;
     }
 
-    &--start,
-    &--register,
-    &--login {
-        height: calc(100% - 110px);
-        padding: 0px 15px 30px;
-    }
-
     &--landing {
-        padding: 50px 15px;
-        text-align: right;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        @media (min-width: 800px) {
+            flex-grow: 0;
+            justify-content: center;
+            width: 33%;
+        }
     }
 
     &--start {
-
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+
+        @media (min-width: 800px) {
+            align-items: flex-end;
+            justify-content: flex-end;
+            width: 60%;
+            margin: 0 5% 5% 0;
+        }
+
+        .action-field__button-box {
+            margin-top: 15px;
+
+            @media (min-width: 800px) {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: flex-end;
+                text-align: right;
+                width: 100%;
+
+                .action-field__text {
+                    margin: 0 5% 0 5%;
+                    flex-grow: 1;
+                    font-size: 30px;
+                }
+            }
+        }
 
         .button--back {
             margin-top: 15px;
             position: relative;
-            right: 25px;
+            right: 40px;
+
+            @media (min-width: 800px) {
+                position: static;
+                margin-top: 0;
+            }
         }
     }
 
     &--register {
+
+        @media (min-width: 800px) {
+            display: flex;
+            justify-content: flex-end;
+            align-self: flex-end;
+            margin-bottom: 5%;
+        }
+
+        .button--back {
+            margin-top: 15px;
+        }
+    }
+
+    &--login {
+
+        @media (min-width: 800px) {
+            display: flex;
+            justify-content: flex-end;
+            align-self: flex-end;
+            margin-bottom: 5%;
+        }
 
         .button--back {
             margin-top: 15px;
