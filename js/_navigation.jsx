@@ -6,7 +6,8 @@ class Navigation extends React.Component {
 
         super(props);
         this.state = {
-            show: false
+            show: false,
+            navSticky: false
         }
     }
 
@@ -29,7 +30,7 @@ class Navigation extends React.Component {
     handleItemClick = (e) => {
 
         let id = e.target.dataset.id;
-        let sectionPosition = document.getElementById(id).offsetTop - 50;
+        let sectionPosition = document.getElementById(id).offsetTop - 60;
 
         this.setState({
             show: false
@@ -38,11 +39,33 @@ class Navigation extends React.Component {
         window.scrollTo(0,sectionPosition);
     }
 
+    setNavPosition = (e) => {
+
+        let windowHeight = window.innerHeight;
+        let positionY = window.pageYOffset;
+        console.log(windowHeight);
+        console.log(positionY);
+        if (windowHeight < positionY) {
+            this.setState({
+                navSticky: true
+            });
+        } else {
+            this.setState({
+                navSticky: false
+            });
+        }
+    }
+
     render() {
+
+        let navClassArr = [];
+        this.state.show ? navClassArr.push("show") : false;
+        this.state.navSticky ? navClassArr.push("sticky") : false;
+
         return(
 
             <nav
-                className={ this.state.show ? "navigation show" : "navigation"}
+                className={ `navigation ${navClassArr.join(" ")}` }
             >
                 <div
                     className="navigation__icon"
@@ -68,6 +91,12 @@ class Navigation extends React.Component {
                 </ul>
             </nav>
         );
+    }
+
+    componentDidMount() {
+
+        this.setNavPosition();
+        window.addEventListener("scroll", this.setNavPosition);
     }
 }
 

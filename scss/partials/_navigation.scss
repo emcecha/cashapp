@@ -5,8 +5,12 @@
     z-index: 1;
 
     @media (min-width: 800px) {
-        position: sticky;
+        position: absolute;
         top: 10%;
+
+        &.sticky {
+            position: sticky;
+        }
     }
 
     &__icon {
@@ -83,10 +87,20 @@
             width: auto;
             height: auto;
             top: 0;
-            right: 10%;
+            right: 7%;
             color: black;
             background-color: rgba(255,255,255,0.8);
             font-size: 30px;
+
+
+            .navigation.sticky & {
+                background-color: $containerBgColor;
+                font-size: $inputFontSize;
+                flex-direction: row;
+                box-shadow: -5px 5px 0 black;
+                top: -50px;
+                right: 5%;
+            }
         }
 
         .navigation.show & {
@@ -96,11 +110,36 @@
 
     &__item {
         text-align: center;
-        padding: 10px;
+        padding: 10px 20px;
         cursor: pointer;
 
         @media (min-width: 800px) {
             text-align: left;
+            position: relative;
+
+            .navigation.sticky & {
+                padding: 10px;
+            }
+
+            &::after {
+                content: "";
+                width: 100%;
+                height: 100%;
+                background-color: $logoThreeColor;
+                border-bottom: 3px solid black;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: -1;
+                transform-origin: left;
+                transform: scaleX(0);
+                transition: transform 250ms ease-in, transform-origin 250ms ease-in 250ms;
+            }
+
+            &:hover::after {
+                transform-origin: right;
+                transform: scaleX(1);
+            }
         }
     }
 }
