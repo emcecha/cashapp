@@ -14,7 +14,7 @@ class ActionField extends React.Component {
 
             return(
                 <div className="action-field action-field--landing">
-                    <Link to="/start">
+                    <Link to="/cashapp/start">
                         <ButtonCaution text="START" />
                     </Link>
                 </div>
@@ -29,7 +29,7 @@ class ActionField extends React.Component {
                         <p className="action-field__text">
                             If you are new
                         </p>
-                        <Link to="/start/register">
+                        <Link to="/cashapp/start/register">
                             <ButtonCaution text="REGISTER" />
                         </Link>
                     </div>
@@ -37,12 +37,12 @@ class ActionField extends React.Component {
                         <p className="action-field__text">
                             If you have an account
                         </p>
-                        <Link to="/start/login">
+                        <Link to="/cashapp/start/login">
                             <ButtonAccept text="LOG IN" />
                         </Link>
                     </div>
                     <div className="action-field__button-box">
-                        <Link to="/">
+                        <Link to="/cashapp">
                             <ButtonBackSmall text="BACK" />
                         </Link>
                     </div>

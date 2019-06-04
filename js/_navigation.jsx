@@ -98,6 +98,10 @@ class Navigation extends React.Component {
         this.setNavPosition();
         window.addEventListener("scroll", this.setNavPosition);
     }
+
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.setNavPosition);
+    }
 }
 
 export default Navigation;

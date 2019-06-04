@@ -60,10 +60,10 @@ class FormLogIn extends React.Component {
                     />
                 </div>
                 <div className="form__button-box form__button-box--flex">
-                    <Link to="/start">
+                    <Link to="/cashapp/start">
                         <ButtonBackSmall text="BACK" />
                     </Link>
-                    <Link to="/start/login">
+                    <Link to="/cashapp">
                         <ButtonAccept text="LOG IN" />
                     </Link>
                 </div>

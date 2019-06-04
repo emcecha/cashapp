@@ -1,7 +1,8 @@
 import React from "react";
 import ButtonCaution from "./_button_caution.jsx";
 import ButtonBackSmall from "./_button_back_small.jsx";
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
+import User from "./_user.js";
 
 class FormRegister extends React.Component {
 
@@ -10,7 +11,8 @@ class FormRegister extends React.Component {
         super(props);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            repeatPassword: ""
         }
     }
 
@@ -33,6 +35,39 @@ class FormRegister extends React.Component {
         this.setState({
             repeatPassword: e.target.value
         });
+    }
+
+    createNewUser = (e) => {
+
+        if (this.state.email === "") {
+            e.preventDefault();
+            return alert("Fill email field.");
+        }
+        if (this.state.password === "") {
+            e.preventDefault();
+            return alert("Set your password");
+        }
+        if (this.state.repeatPassword === "") {
+            e.preventDefault();
+            return alert("Repeat your password");
+        }
+        if (this.state.password !== this.state.repeatPassword) {
+            e.preventDefault();
+            return alert("Field Password and Reapeat Password don't match")
+        }
+
+        localStorage.clear();
+
+        if (!localStorage.getItem("users")) {
+            let usersArray = [];
+            localStorage.setItem("users",JSON.stringify(usersArray));
+        }
+
+        let newUser = new User(this.state.email, this.state.password);
+        let usersArray = JSON.parse(localStorage.getItem("users"));
+        let newUsersArray = [...usersArray, newUser];
+
+        localStorage.setItem("users", JSON.stringify(newUsersArray));
     }
 
     render() {
@@ -70,10 +105,10 @@ class FormRegister extends React.Component {
                     />
                 </div>
                 <div className="form__button-box form__button-box--flex">
-                    <Link to="/start">
+                    <Link to="/cashapp/start">
                         <ButtonBackSmall text="BACK" />
                     </Link>
-                    <Link to="/start/register">
+                    <Link to={ `/cashapp/user/${this.state.email}` } onClick={ this.createNewUser }>
                         <ButtonCaution text="REGISTER" />
                     </Link>
                 </div>

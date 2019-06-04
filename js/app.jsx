@@ -12,6 +12,8 @@ import LandingPage from "./_landing_page.jsx";
 import StartPage from "./_start_page.jsx";
 import RegisterPage from "./_register_page.jsx";
 import LogInPage from "./_login_page.jsx";
+import Cashapp from "./_cashapp.jsx";
+import AppRedirect from "./_app_redirect.jsx";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -20,10 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return(
                 <HashRouter>
                     <Switch>
-                        <Route exact path="/" component={ LandingPage } />
-                        <Route exact path="/start" component={ StartPage } />
-                        <Route exact path="/start/register" component= { RegisterPage } />
-                        <Route exact path="/start/login" component= { LogInPage } />
+                        <Route exact path="/cashapp" component={ LandingPage } />
+                        <Route exact path="/cashapp/start" component={ StartPage } />
+                        <Route exact path="/cashapp/start/register" component={ RegisterPage } />
+                        <Route exact path="/cashapp/start/login" component={ LogInPage } />
+                        <Route exact path="/cashapp/user/:userID" component={ Cashapp } />
                     </Switch>
                 </HashRouter>
             );
