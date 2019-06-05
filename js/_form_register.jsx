@@ -53,12 +53,24 @@ class FormRegister extends React.Component {
         }
         if (this.state.password !== this.state.repeatPassword) {
             e.preventDefault();
-            return alert("Field Password and Reapeat Password don't match")
+            return alert("Field Password and Reapeat Password don't match");
         }
 
-        localStorage.clear();
+        if (localStorage.getItem("users")) {
 
-        if (!localStorage.getItem("users")) {
+            let actualUsers = JSON.parse(localStorage.getItem("users"));
+
+            let checkArr = actualUsers.filter((el) => {
+                return el.email === this.state.email;
+            });
+
+            if (checkArr.length > 0) {
+                e.preventDefault();
+                return alert("There already is user with the same email address");
+            }
+
+        } else {
+
             let usersArray = [];
             localStorage.setItem("users",JSON.stringify(usersArray));
         }
@@ -67,6 +79,7 @@ class FormRegister extends React.Component {
         let usersArray = JSON.parse(localStorage.getItem("users"));
         let newUsersArray = [...usersArray, newUser];
 
+        localStorage.setItem("activeUser", newUser.id);
         localStorage.setItem("users", JSON.stringify(newUsersArray));
     }
 
