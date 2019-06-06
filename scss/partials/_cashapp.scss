@@ -3,4 +3,27 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+
+    &__content {
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-between;
+        padding: 2.5%;
+    }
+
+    &__main {
+        width: 50%;
+    }
+
+    &__sidebar {
+        width: 22%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .cashapp-label-box,
+        .cashapp-chart-box {
+            height: 47.5%;
+        }
+    }
 }
