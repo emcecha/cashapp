@@ -9,8 +9,8 @@ class CashappLabelBox extends React.Component {
         this.state = {
             showForm: false,
             formEditMode: false,
-            startNameValue: "",
-            startOptionValue: ""
+            editedItemName: "",
+            editedItemOption: ""
         }
     }
 
@@ -31,17 +31,15 @@ class CashappLabelBox extends React.Component {
 
     handleShowForm = () => {
         this.setState({
-            showForm: true
+            showForm: true,
+            formEditMode: false
         });
     }
 
     handleNewItem = (newItem) => {
-
         if (typeof this.props.onItemChange === "function") {
-
             let newItemsArr = [...this.props.items, newItem];
-
-            this.setLocalStorage(newItemsArr)
+            this.setLocalStorage(newItemsArr);
             this.handleCloseForm();
             this.props.onItemChange();
         }
@@ -49,28 +47,47 @@ class CashappLabelBox extends React.Component {
 
     handleCloseForm = () => {
         this.setState({
-            showForm: false
+            showForm: false,
+            editedItemName: "",
+            editedItemOption: ""
         });
     }
 
-    handleEditItem = () => {
+    handleEditItem = (item,option) => {
         this.setState({
             formEditMode: true,
-            showForm: true
+            showForm: true,
+            editedItemName: item,
+            editedItemOption: option
         });
     }
 
-    handleSaveItemEdition = () => {
-
+    handleSaveItemEdition = (newItem,editedItemName) => {
+        if (typeof this.props.onItemChange === "function") {
+            let editedItemsArr = this.props.items.map((item) => {
+                if (item.name.toLowerCase() === editedItemName.toLowerCase()) {
+                    item = newItem;
+                }
+                return item;
+            });
+            this.setLocalStorage(editedItemsArr);
+            this.handleCloseForm();
+            this.props.onItemChange();
+        }
     }
 
-    handleDeleteItem = () => {
-
+    handleDeleteItem = (deletedItemName) => {
+        if (typeof this.props.onItemChange === "function") {
+            let newItemsArr = this.props.items.filter((item,index,arr) => {
+                return item.name !== deletedItemName;
+            });
+            this.setLocalStorage(newItemsArr);
+            this.handleCloseForm();
+            this.props.onItemChange();
+        }
     }
 
     render() {
-
-        console.log(this.props.items);
 
         return(
             <div className="cashapp-label-box window">
@@ -92,8 +109,8 @@ class CashappLabelBox extends React.Component {
 
                     <CashappLabelBoxForm
                         formEditMode = { this.state.formEditMode }
-                        startNameValue= { this.props.startNameValue }
-                        startOptionValue= { this.props.startOptionValue }
+                        editedItemName= { this.state.editedItemName }
+                        editedItemOption= { this.state.editedItemOption }
                         items={ this.props.items }
                         showForm={ this.state.showForm }
                         showOptions={ this.props.showOptions }
@@ -109,9 +126,11 @@ class CashappLabelBox extends React.Component {
                                 return(
                                     <CashappLabelBoxItem
                                         name={ el.name }
+                                        option={ el.option }
                                         key={ index + el.name }
                                         type={ el.type }
                                         onEditItem = { this.handleEditItem }
+                                        onDeleteItem={ this.handleDeleteItem }
                                     />
                                 );
                             })

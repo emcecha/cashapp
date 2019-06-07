@@ -4,17 +4,6 @@ import CashappLabelBox from "./_cashapp_label_box.jsx";
 import CashappCashflow from "./_cashapp_cashflow.jsx";
 import CashappChartBox from "./_cashapp_chart_box.jsx";
 
-let us = JSON.parse(localStorage.getItem("users"));
-us[0].accounts = [
-    {
-        name: "All",
-        option: "zł",
-        type: "default"
-    }
-];
-let usStr = JSON.stringify(us);
-localStorage.setItem("users", usStr);
-
 class Cashapp extends React.Component {
 
     constructor(props) {
@@ -34,7 +23,7 @@ class Cashapp extends React.Component {
             }
             return el.id === activeUserId;
         });
-        return userArr[0]
+        return userArr[0];
     }
 
     handleItemChange = () => {

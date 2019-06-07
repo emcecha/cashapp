@@ -5,13 +5,17 @@ class CashappLabelBoxForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            itemName: this.props.startNameValue,
-            itemOption: this.props.startOptionValue,
-            showOptions: this.props.showOptions
+            formEditMode: this.props.formEditMode,
+            itemName: "",
+            itemOption: "",
+            showOptions: this.props.showOptions,
+            editedItemName: "",
+            editedItemOption: ""
         }
     }
 
     handleInputNewItemNameOnChange = (e) => {
+
         this.setState({
             itemName: e.target.value
         });
@@ -23,16 +27,39 @@ class CashappLabelBoxForm extends React.Component {
         });
     }
 
+    getNewOrEditedItem(item,option) {
+
+        if (option === "") {
+            option = "zł";
+        } else {
+            option = this.state.itemOption;
+        }
+
+        let newItem = {
+            name: item,
+            option: option,
+            type: "custom"
+        }
+
+        this.setState({
+            itemName: "",
+            itemOption: "",
+            editedItemName: "",
+            editedItemOption: ""
+        });
+
+        return newItem;
+    }
+
     handleClickOnActionButton = (e) => {
 
         e.preventDefault();
 
-        if (typeof this.props.onNewItem === "function") {
+        if (this.state.itemName === "") {
+            return alert("Please, enter label name");
+        }
 
-            if (this.state.itemName === "") {
-                return alert("Please, enter label name");
-            }
-
+        if (!this.state.formEditMode) {
             let checkArr = this.props.items.filter((el) => {
                 let elNameLow = el.name.toLowerCase();
                 let newNameLow = this.state.itemName.toLowerCase();
@@ -42,32 +69,51 @@ class CashappLabelBoxForm extends React.Component {
             if (checkArr.length > 0) {
                 return alert(`Label ${this.state.itemName} already exists`);
             }
+        }
 
-            let newItem = {
-                name: this.state.itemName,
-                option: this.state.itemOption,
-                type: "custom"
+        let newItem = this.getNewOrEditedItem(this.state.itemName, this.state.itemOption);
+
+        if (this.state.formEditMode) {
+
+            if (typeof this.props.onEditItem === "function") {
+                this.props.onEditItem(newItem,this.props.editedItemName);
+            } else {
+                return;
             }
 
+        } else {
+
+            if (typeof this.props.onNewItem === "function") {
+                this.props.onNewItem(newItem);
+            } else {
+                return;
+            }
+
+        }
+    }
+
+    handleClickOnCloseForm = (e) => {
+        e.preventDefault();
+        if (typeof this.props.onCloseForm === "function") {
             this.setState({
                 itemName: "",
-                itemOption: ""
-            }, this.props.onNewItem(newItem));
-
+                itemOption: "",
+                editedItemName: "",
+                editedItemOption: ""
+            });
+            this.props.onCloseForm();
         } else {
             return;
         }
     }
 
-    handleClickOnCloseForm = () => {
-        if (typeof this.props.onCloseForm === "function") {
+    componentDidUpdate(prevProps) {
+        if (prevProps.editedItemName !== this.props.editedItemName) {
             this.setState({
-                itemName: "",
-                itemOption: ""
+                formEditMode: this.props.formEditMode,
+                itemName: this.props.editedItemName,
+                itemOption: this.props.editedItemOption
             });
-            this.props.onCloseForm();
-        } else {
-            return;
         }
     }
 
@@ -88,7 +134,7 @@ class CashappLabelBoxForm extends React.Component {
         }
 
         let actionButton;
-        if (this.props.mode) {
+        if (this.props.formEditMode) {
             actionButton = (
                 <button
                     onClick={ this.handleClickOnActionButton }
@@ -105,10 +151,6 @@ class CashappLabelBoxForm extends React.Component {
                 </button>
             )
         }
-
-        console.log(actionButton);
-
-        console.log("render");
 
         return(
             <form className={ `cashapp-label-box-form ${showClass}` }>

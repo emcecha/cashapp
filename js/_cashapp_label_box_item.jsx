@@ -5,7 +5,17 @@ class CashappLabelBoxItem extends React.Component {
     handleClickOnEditItem = () => {
         if (typeof this.props.onEditItem === "function") {
             let item = this.props.name;
-            this.props.onEditItem(item);
+            let option = this.props.option;
+            this.props.onEditItem(item,option);
+        } else {
+            return;
+        }
+    }
+
+    handleClickOnDeleteItem = () => {
+        if (typeof this.props.onDeleteItem === "function") {
+            let item = this.props.name;
+            this.props.onDeleteItem(item);
         } else {
             return;
         }
@@ -21,7 +31,7 @@ class CashappLabelBoxItem extends React.Component {
                     <button onClick = { this.handleClickOnEditItem }>
                         edit
                     </button>
-                    <button>
+                    <button onClick = { this.handleClickOnDeleteItem }>
                         X
                     </button>
                 </div>
