@@ -1,6 +1,16 @@
 import React from "react";
 
 class CashappLabelBoxItem extends React.Component {
+
+    handleClickOnEditItem = () => {
+        if (typeof this.props.onEditItem === "function") {
+            let item = this.props.name;
+            this.props.onEditItem(item);
+        } else {
+            return;
+        }
+    }
+
     render() {
         return(
             <li>
@@ -8,7 +18,7 @@ class CashappLabelBoxItem extends React.Component {
                     { this.props.name }
                 </div>
                 <div>
-                    <button>
+                    <button onClick = { this.handleClickOnEditItem }>
                         edit
                     </button>
                     <button>

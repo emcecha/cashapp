@@ -5,39 +5,68 @@ class CashappLabelBoxForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            newItemName: "",
-            newItemOption: "",
-            showOptions: this.props.showOptions,
-            options: this.props.options
+            itemName: this.props.startNameValue,
+            itemOption: this.props.startOptionValue,
+            showOptions: this.props.showOptions
         }
     }
 
     handleInputNewItemNameOnChange = (e) => {
         this.setState({
-            newItemName: e.target.value
+            itemName: e.target.value
         });
     }
 
     handleSelectNewItemOption = (e) => {
         this.setState({
-            newItemOption: e.target.value
+            itemOption: e.target.value
         });
     }
 
-    handleClickOnAddNewItem = (e) => {
+    handleClickOnActionButton = (e) => {
 
-        e.preventDefault
+        e.preventDefault();
 
         if (typeof this.props.onNewItem === "function") {
 
-            let newItem = {
-                name: this.state.newItemName,
-                option: this.state.newItemOption
+            if (this.state.itemName === "") {
+                return alert("Please, enter label name");
             }
-            console.log(newItem);
-            this.props.onNewItem(newItem);
 
-        }else {
+            let checkArr = this.props.items.filter((el) => {
+                let elNameLow = el.name.toLowerCase();
+                let newNameLow = this.state.itemName.toLowerCase();
+                return elNameLow === newNameLow;
+            });
+
+            if (checkArr.length > 0) {
+                return alert(`Label ${this.state.itemName} already exists`);
+            }
+
+            let newItem = {
+                name: this.state.itemName,
+                option: this.state.itemOption,
+                type: "custom"
+            }
+
+            this.setState({
+                itemName: "",
+                itemOption: ""
+            }, this.props.onNewItem(newItem));
+
+        } else {
+            return;
+        }
+    }
+
+    handleClickOnCloseForm = () => {
+        if (typeof this.props.onCloseForm === "function") {
+            this.setState({
+                itemName: "",
+                itemOption: ""
+            });
+            this.props.onCloseForm();
+        } else {
             return;
         }
     }
@@ -58,6 +87,29 @@ class CashappLabelBoxForm extends React.Component {
             showClass = "";
         }
 
+        let actionButton;
+        if (this.props.mode) {
+            actionButton = (
+                <button
+                    onClick={ this.handleClickOnActionButton }
+                >
+                    edit
+                </button>
+            )
+        } else {
+            actionButton = (
+                <button
+                    onClick={ this.handleClickOnActionButton }
+                >
+                    add
+                </button>
+            )
+        }
+
+        console.log(actionButton);
+
+        console.log("render");
+
         return(
             <form className={ `cashapp-label-box-form ${showClass}` }>
                 <div className="cashapp-label-box-form__input-box">
@@ -66,7 +118,7 @@ class CashappLabelBoxForm extends React.Component {
                     </label>
                     <input
                         type="text"
-                        value={ this.state.newItem }
+                        value={ this.state.itemName }
                         onChange={ this.handleInputNewItemNameOnChange }
                     />
                 </div>
@@ -78,10 +130,10 @@ class CashappLabelBoxForm extends React.Component {
                         Options
                     </label>
                     <select
-                        value={ this.state.newItemOption }
+                        value={ this.state.itemOption }
                         onChange={ this.handleSelectNewItemOption }
                     >
-                        { this.state.options.map((el) => {
+                        { this.props.options.map((el) => {
                             return(
                                 <option
                                     key={ el }
@@ -93,10 +145,10 @@ class CashappLabelBoxForm extends React.Component {
                         }) }
                     </select>
                 </div>
+                { actionButton }
                 <button
-                    onClick={ this.handleClickOnAddNewItem }
-                >add</button>
-                <button>^</button>
+                    onClick={ this.handleClickOnCloseForm }
+                >^</button>
             </form>
         );
     }

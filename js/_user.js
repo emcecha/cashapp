@@ -4,9 +4,21 @@ class User {
         this.id = new Date().getTime().toString();
         this.email = email;
         this.password = password;
-        this.accounts = [];
-        this.categories = [];
-        this.items = [];
+        this.accounts = [
+            {
+                name: "All",
+                option: "zł",
+                type: "default"
+            }
+        ];
+        this.categories = [
+            {
+                name: "Uncategorized",
+                option: "",
+                type: "default"
+            }
+        ];
+        this.flowItems = [];
     }
 }
 

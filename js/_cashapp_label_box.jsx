@@ -7,10 +7,26 @@ class CashappLabelBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            defaultItems: this.props.defaultItems,
-            items: [],
-            showForm: false
+            showForm: false,
+            formEditMode: false,
+            startNameValue: "",
+            startOptionValue: ""
         }
+    }
+
+    setLocalStorage(element) {
+
+        let activeUserId = localStorage.getItem("activeUser");
+        let users = JSON.parse(localStorage.getItem("users"));
+        let key = this.props.title.toLowerCase();
+
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].id === activeUserId) {
+                users[i][key] = element;
+            }
+        }
+
+        localStorage.setItem("users", JSON.stringify(users));
     }
 
     handleShowForm = () => {
@@ -20,12 +36,15 @@ class CashappLabelBox extends React.Component {
     }
 
     handleNewItem = (newItem) => {
-        let newItemsArr = [...this.state.items, newItem];
-        this.setState({
-            items: newItemsArr
-        }, () => {
-            this.handleCloseForm()
-        });
+
+        if (typeof this.props.onItemChange === "function") {
+
+            let newItemsArr = [...this.props.items, newItem];
+
+            this.setLocalStorage(newItemsArr)
+            this.handleCloseForm();
+            this.props.onItemChange();
+        }
     }
 
     handleCloseForm = () => {
@@ -34,9 +53,24 @@ class CashappLabelBox extends React.Component {
         });
     }
 
+    handleEditItem = () => {
+        this.setState({
+            formEditMode: true,
+            showForm: true
+        });
+    }
+
+    handleSaveItemEdition = () => {
+
+    }
+
+    handleDeleteItem = () => {
+
+    }
+
     render() {
 
-        let listItems = [...this.state.defaultItems,...this.state.items];
+        console.log(this.props.items);
 
         return(
             <div className="cashapp-label-box window">
@@ -57,20 +91,27 @@ class CashappLabelBox extends React.Component {
                     </div>
 
                     <CashappLabelBoxForm
+                        formEditMode = { this.state.formEditMode }
+                        startNameValue= { this.props.startNameValue }
+                        startOptionValue= { this.props.startOptionValue }
+                        items={ this.props.items }
                         showForm={ this.state.showForm }
                         showOptions={ this.props.showOptions }
                         options={ this.props.options }
                         onNewItem={ this.handleNewItem }
                         onCloseForm={ this.handleCloseForm }
+                        onEditItem={ this.handleSaveItemEdition }
                     />
 
                     <ul>
                         {
-                            listItems.map((el,index) => {
+                            this.props.items.map((el,index) => {
                                 return(
                                     <CashappLabelBoxItem
                                         name={ el.name }
                                         key={ index + el.name }
+                                        type={ el.type }
+                                        onEditItem = { this.handleEditItem }
                                     />
                                 );
                             })
