@@ -15,7 +15,6 @@ class CashappLabelBoxForm extends React.Component {
     }
 
     handleInputNewItemNameOnChange = (e) => {
-
         this.setState({
             itemName: e.target.value
         });

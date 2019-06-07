@@ -9,7 +9,8 @@ class Cashapp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.loadUser()
+            user: this.loadUser(),
+            activeLabel: "All"
         }
     }
 
@@ -35,6 +36,8 @@ class Cashapp extends React.Component {
 
     render() {
 
+        console.log(this.state.user);
+
         return(
             <div className="cashapp">
                 <CashappHeader />
@@ -56,7 +59,10 @@ class Cashapp extends React.Component {
                         />
                     </nav>
                     <main className="cashapp__main window">
-                        <CashappCashflow />
+                        <CashappCashflow
+                            activeLabel={ this.state.activeLabel }
+                            user={ this.state.user }
+                        />
                     </main>
                     <aside className="cashapp__sidebar cashapp__sidebar--right">
                         <CashappChartBox />

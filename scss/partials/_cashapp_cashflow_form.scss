@@ -1,0 +1,9 @@
+.cashapp-cashflow-form {
+    height: 0;
+    overflow: hidden;
+    transition: height 300ms;
+
+    &.slide-down {
+        height: 100px;
+    }
+}
