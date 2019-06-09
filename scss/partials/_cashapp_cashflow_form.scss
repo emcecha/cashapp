@@ -2,8 +2,47 @@
     height: 0;
     overflow: hidden;
     transition: height 300ms;
+    padding-top: 10px;
+    border-bottom: none;
 
     &.slide-down {
         height: 100px;
+        border-bottom: 1px solid black;
+        margin-bottom: 5%
+    }
+
+    &__input-box {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    &__input {
+        padding: 5px;
+
+        &--category {
+            width: 20%;
+        }
+
+        &--description {
+            width: 24%;
+        }
+
+        &--date {
+            width: 24%;
+        }
+
+        &--account {
+            width: 19%;
+        }
+
+        &--amount {
+            width: 10%;
+        }
+    }
+
+    &__button-box {
+        display: flex;
+        justify-content: flex-end;
     }
 }

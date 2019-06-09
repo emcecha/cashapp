@@ -1,0 +1,51 @@
+.cashapp-cashflow-item {
+    padding: 2% 2% 2% 0;
+    cursor: pointer;
+
+    &:hover .button-item {
+        color: rgba(0,0,0,0.3);
+    }
+
+    .button-item:hover {
+        color: $logoTwoColor;
+    }
+
+    &__button-box {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(0,0,0,0.3);
+    }
+
+    &__input {
+        padding: 5px;
+        font-size: 14px;
+
+        &--category {
+            width: 20%;
+        }
+
+        &--description {
+            width: 24%;
+        }
+
+        &--date {
+            width: 24%;
+        }
+
+        &--account {
+            width: 19%;
+        }
+
+        &--amount {
+            font-size: 18px;
+            font-weight: bold;
+            width: 10%;
+        }
+    }
+}

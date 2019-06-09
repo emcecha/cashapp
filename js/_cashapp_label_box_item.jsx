@@ -22,25 +22,30 @@ class CashappLabelBoxItem extends React.Component {
     }
 
     render() {
+
+        let buttonBox = (
+            <div className="cashapp-label-box-item__button-box">
+                <button
+                    className="button-item"
+                    onClick = { this.handleClickOnEditItem }
+                >
+                    <i className="fas fa-pencil-alt"></i>
+                </button>
+                <button
+                    className="button-item"
+                    onClick = { this.handleClickOnDeleteItem }
+                >
+                    <i className="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        );
+
         return(
             <li className="cashapp-label-box-item">
                 <div className="cashapp-label-box-item__name">
                     { this.props.name }
                 </div>
-                <div className="cashapp-label-box-item__button-box">
-                    <button
-                        className="button-item"
-                        onClick = { this.handleClickOnEditItem }
-                    >
-                        <i className="fas fa-pencil-alt"></i>
-                    </button>
-                    <button
-                        className="button-item"
-                        onClick = { this.handleClickOnDeleteItem }
-                    >
-                        <i className="fas fa-trash-alt"></i>
-                    </button>
-                </div>
+                { this.props.type === "custom" ? buttonBox : null }
             </li>
         );
     }

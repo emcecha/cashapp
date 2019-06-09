@@ -1,24 +1,46 @@
 .cashapp {
 
     .button {
-        height: 30px;
-        width: 30px;
+        height: 35px;
+        width: 35px;
         background-color: $logoTwoColor;
         color: white;
-        font-size: 12px;
-        box-shadow: -3px 3px 0 black;
+        font-size: 20px;
+        box-shadow: -4px 4px 0 black;
         border: 3px solid $logoTwoColor;
         transition: background-color 200ms, color 200ms;
+        margin-left: 4px;
+
+        &:hover {
+            background-color: white;
+            color: $logoTwoColor;
+        }
+
+        &--profit {
+            background-color: $logoThreeColor;
+            border: 3px solid $logoThreeColor;
+
+            &:hover {
+                color: $logoThreeColor;
+            }
+        }
+
+        &--expense {
+            background-color: $logoFiveColor;
+            border: 3px solid $logoFiveColor;
+            margin-left: 4px;
+
+            &:hover {
+                color: $logoFiveColor;
+            }
+        }
 
         &--small {
             height: 25px;
             width: 25px;
             font-size: 12px;
-        }
-
-        &:hover {
-            background-color: white;
-            color: $logoTwoColor;
+            box-shadow: -3px 3px 0 black;
+            margin-left: 3px;
         }
     }
 

@@ -219,27 +219,30 @@ class CashappCashflowForm extends React.Component {
         if (this.props.formEditMode) {
             actionButton = (
                 <button
+                    className="button"
                     onClick={ this.handleClickOnActionButton }
                 >
-                    edit
+                    <i className="fas fa-save"></i>
                 </button>
             )
         } else {
             actionButton = (
                 <button
+                    className="button"
                     onClick={ this.handleClickOnActionButton }
                 >
-                    add
+                    <i className="fas fa-plus"></i>
                 </button>
             )
         }
 
         return(
             <form className={ formClass }>
-                <div>
+                <div className="cashapp-cashflow-form__input-box">
                     <select
                         value={ this.state.category }
                         onChange={ this.handleSelectCategory }
+                        className="cashapp-cashflow-form__input cashapp-cashflow-form__input--category"
                     >
                         { this.props.user.categories.map((el) => {
                             return(
@@ -256,15 +259,18 @@ class CashappCashflowForm extends React.Component {
                         type="text"
                         value={ this.state.description }
                         onChange={ this.handleInputDescription }
+                        className="cashapp-cashflow-form__input cashapp-cashflow-form__input--description"
                     />
                     <input
                         type="date"
                         value={ this.state.date }
                         onChange={ this.handleInputDate }
+                        className="cashapp-cashflow-form__input cashapp-cashflow-form__input--date"
                     />
                     <select
                         value={ this.state.account }
                         onChange={ this.handleSelectAccount }
+                        className="cashapp-cashflow-form__input cashapp-cashflow-form__input--account"
                     >
                         { this.props.user.accounts.map((el) => {
                             return(
@@ -278,17 +284,21 @@ class CashappCashflowForm extends React.Component {
                         }) }
                     </select>
                     <input
+                        className="cashapp-cashflow-form__input cashapp-cashflow-form__input--amount"
                         type="number"
                         min="0"
                         value={ this.state.amount }
                         onChange={ this.handleInputAmount }
                     />
                 </div>
-                <div>
+                <div className="cashapp-cashflow-form__button-box">
                     { actionButton }
                     <button
                         onClick={ this.handleClickOnCancel }
-                    >/cancel</button>
+                        className="button"
+                    >
+                        <i className="fas fa-times"></i>
+                    </button>
                 </div>
             </form>
         );

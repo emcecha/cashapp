@@ -97,19 +97,27 @@ class CashappCashflow extends React.Component {
     render() {
         return(
             <div className="cashapp-cashflow">
-                <div className="cashapp-cashflow__header">
-                    <div>
-                        <h2>{ this.props.activeLabel }</h2>
+                <div className="cashapp-cashflow__header-box">
+                    <div className="cashapp-cashflow__header">
+                        <h2 className="cashapp-cashflow__title">
+                            Cashflow
+                        </h2>
                         <div>
                             <button
                                 onClick={ this.handleShowFormProfit }
-                            >profit</button>
+                                className="button button--profit"
+                            >
+                                <i className="fas fa-plus"></i>
+                            </button>
                             <button
                                 onClick={ this.handleShowFormExpense }
-                            >/expense</button>
+                                className="button button--expense"
+                            >
+                                <i className="fas fa-minus"></i>
+                            </button>
                         </div>
                     </div>
-                    <ul className="">
+                    <ul className="cashapp-cashflow__list-header">
                         <li>Category</li>
                         <li>Description</li>
                         <li>Date</li>
@@ -134,6 +142,7 @@ class CashappCashflow extends React.Component {
                                 <CashappCashflowItem
                                     item={ el }
                                     key={ el.id }
+                                    itemType={ el.itemType }
                                     onEditItem={ this.handleEditItem }
                                     onDeleteItem={ this.handleDeleteItem }
                                 />
