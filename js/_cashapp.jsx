@@ -36,8 +36,6 @@ class Cashapp extends React.Component {
 
     render() {
 
-        console.log(this.state.user);
-
         return(
             <div className="cashapp">
                 <CashappHeader />
@@ -60,8 +58,10 @@ class Cashapp extends React.Component {
                     </nav>
                     <main className="cashapp__main window">
                         <CashappCashflow
+                            title="flowItems"
                             activeLabel={ this.state.activeLabel }
                             user={ this.state.user }
+                            onItemChange={ this.handleItemChange }
                         />
                     </main>
                     <aside className="cashapp__sidebar cashapp__sidebar--right">

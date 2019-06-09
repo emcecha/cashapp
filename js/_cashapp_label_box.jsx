@@ -91,19 +91,16 @@ class CashappLabelBox extends React.Component {
 
         return(
             <div className="cashapp-label-box window">
-
                 <div>
-
-                </div>
-
-                <div>
-
                     <div className="cashapp-label-box__header">
-                        <h2>{ this.props.title }</h2>
+                        <h2 className="cashapp-label-box__title">
+                            { this.props.title }
+                        </h2>
                         <button
+                            className="button button--small"
                             onClick={ this.handleShowForm }
                         >
-                        +
+                            <i className="fas fa-plus"></i>
                         </button>
                     </div>
 
@@ -119,25 +116,24 @@ class CashappLabelBox extends React.Component {
                         onCloseForm={ this.handleCloseForm }
                         onEditItem={ this.handleSaveItemEdition }
                     />
-
-                    <ul>
-                        {
-                            this.props.items.map((el,index) => {
-                                return(
-                                    <CashappLabelBoxItem
-                                        name={ el.name }
-                                        option={ el.option }
-                                        key={ index + el.name }
-                                        type={ el.type }
-                                        onEditItem = { this.handleEditItem }
-                                        onDeleteItem={ this.handleDeleteItem }
-                                    />
-                                );
-                            })
-                        }
-                    </ul>
-
                 </div>
+
+                <ul className="cashapp-label-box__list">
+                    {
+                        this.props.items.map((el,index) => {
+                            return(
+                                <CashappLabelBoxItem
+                                    name={ el.name }
+                                    option={ el.option }
+                                    key={ index + el.name }
+                                    type={ el.type }
+                                    onEditItem = { this.handleEditItem }
+                                    onDeleteItem={ this.handleDeleteItem }
+                                />
+                            );
+                        })
+                    }
+                </ul>
 
             </div>
         );

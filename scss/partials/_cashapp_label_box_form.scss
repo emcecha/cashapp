@@ -1,9 +1,37 @@
 .cashapp-label-box-form {
     height: 0;
     overflow: hidden;
-    transition: height 300ms;
+    transition: height 300ms, margin-bottom 300ms;
+    padding-top: 10px;
+    border-bottom: none;
 
     &.slide-down {
-        height: 100px;
+        height: 82px;
+        border-bottom: 1px solid black;
+        margin-bottom: 5%;
+    }
+
+    &__input-box {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    &__input-text {
+        width: 75%;
+        padding: 5px;
+    }
+
+    &__input-select {
+        width: 23%;
+    }
+
+    &__button-box {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .button {
+        margin-left: 3px;
     }
 }

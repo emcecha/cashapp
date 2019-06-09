@@ -125,6 +125,13 @@ class CashappLabelBoxForm extends React.Component {
             displayStyle = { display: "none" };
         }
 
+        let widthStyle;
+        if (this.state.showOptions) {
+            widthStyle = { width: "75%" };
+        } else {
+            widthStyle = { width: "100%" };
+        }
+
         let showClass;
         if (this.props.showForm) {
             showClass ="slide-down";
@@ -136,17 +143,19 @@ class CashappLabelBoxForm extends React.Component {
         if (this.props.formEditMode) {
             actionButton = (
                 <button
+                    className="button button--small"
                     onClick={ this.handleClickOnActionButton }
                 >
-                    edit
+                    <i className="fas fa-save"></i>
                 </button>
             )
         } else {
             actionButton = (
                 <button
+                    className="button button--small"
                     onClick={ this.handleClickOnActionButton }
                 >
-                    add
+                    <i className="fas fa-plus"></i>
                 </button>
             )
         }
@@ -154,25 +163,18 @@ class CashappLabelBoxForm extends React.Component {
         return(
             <form className={ `cashapp-label-box-form ${showClass}` }>
                 <div className="cashapp-label-box-form__input-box">
-                    <label>
-                        Name
-                    </label>
                     <input
+                        className="cashapp-label-box-form__input-text"
                         type="text"
                         value={ this.state.itemName }
                         onChange={ this.handleInputNewItemNameOnChange }
+                        style={ widthStyle }
                     />
-                </div>
-                <div
-                    className="cashapp-label-box-form__input-box"
-                    style={ displayStyle }
-                >
-                    <label>
-                        Options
-                    </label>
                     <select
+                        className="cashapp-label-box-form__input-select"
                         value={ this.state.itemOption }
                         onChange={ this.handleSelectNewItemOption }
+                        style={ displayStyle }
                     >
                         { this.props.options.map((el) => {
                             return(
@@ -186,10 +188,15 @@ class CashappLabelBoxForm extends React.Component {
                         }) }
                     </select>
                 </div>
-                { actionButton }
-                <button
-                    onClick={ this.handleClickOnCloseForm }
-                >^</button>
+                <div className="cashapp-label-box-form__button-box">
+                    { actionButton }
+                    <button
+                        className="button button--small"
+                        onClick={ this.handleClickOnCloseForm }
+                    >
+                        <i className="fas fa-times"></i>
+                    </button>
+                </div>
             </form>
         );
     }

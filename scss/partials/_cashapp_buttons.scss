@@ -1,0 +1,32 @@
+.cashapp {
+
+    .button {
+        height: 30px;
+        width: 30px;
+        background-color: $logoTwoColor;
+        color: white;
+        font-size: 12px;
+        box-shadow: -3px 3px 0 black;
+        border: 3px solid $logoTwoColor;
+        transition: background-color 200ms, color 200ms;
+
+        &--small {
+            height: 25px;
+            width: 25px;
+            font-size: 12px;
+        }
+
+        &:hover {
+            background-color: white;
+            color: $logoTwoColor;
+        }
+    }
+
+    .button-item {
+        color: white;
+        font-size: 12px;
+        height: 20px;
+        width: 20px;
+        transition: color 250ms;
+    }
+}

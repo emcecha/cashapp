@@ -1,0 +1,15 @@
+.cashapp-label-box-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2% 2% 2% 0;
+    cursor: pointer;
+
+    &:hover .button-item {
+        color: rgba(0,0,0,0.3);
+    }
+
+    .button-item:hover {
+        color: $logoTwoColor;
+    }
+}

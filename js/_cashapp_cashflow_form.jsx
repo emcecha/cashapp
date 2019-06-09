@@ -6,11 +6,14 @@ class CashappCashflowForm extends React.Component {
 
         super(props);
         this.state = {
-            category: "Uncategorized",
+            formEditMode: this.props.formEditMode,
+            category: "",
             description: "",
             date: this.getDateInInputDateFormat(),
             account: "All",
-            amount: ""
+            amount: "",
+            itemType: "",
+            itemEditId: this.props.itemEditId
         }
     }
 
@@ -22,8 +25,16 @@ class CashappCashflowForm extends React.Component {
         month.length === 1 ? month = "0" + month : month;
         let year = dateObj.getFullYear().toString();
         let actualDate = `${year}-${month}-${day}`;
-        console.log(actualDate);
         return actualDate;
+    }
+
+    getDateInDateObject(dateInput) {
+        let dateInputArr = dateInput.split("-");
+        let year = Number(dateInputArr[0]);
+        let month = Number(dateInputArr[1]) - 1;
+        let day = Number(dateInputArr[2]);
+        let dateObj = new Date(year,month,day,0,0,0,0).getTime();
+        return dateObj;
     }
 
     handleSelectCategory = (e) => {
@@ -57,10 +68,17 @@ class CashappCashflowForm extends React.Component {
     }
 
     handleClickOnCancel = (e) => {
+
+        e.preventDefault();
+
         if (typeof this.props.onCancel === "function") {
             this.setState({
+                category: "",
                 description: "",
-                amount: ""
+                date: this.getDateInInputDateFormat(),
+                account: "All",
+                amount: "",
+                itemEditId: ""
             });
             this.props.onCancel();
         } else {
@@ -68,14 +86,152 @@ class CashappCashflowForm extends React.Component {
         }
     }
 
+    getNewOrEditedItem() {
+
+        let itemID;
+        if (!this.state.formEditMode) {
+            itemID = new Date().getTime();
+        } else {
+            console.log(this.state.itemEditId);
+            itemID = this.state.itemEditId;
+            console.log(itemID);
+        }
+
+        let category;
+        if (this.state.category === "") {
+            category = "Uncategorized";
+        } else {
+            category = this.state.category;
+        }
+
+        let description;
+        if (this.state.description === "") {
+            description = "-- no description --";
+        } else {
+            description = this.state.description;
+        }
+
+        let date;
+        if (this.state.date === "") {
+            let dateString = this.getDateInInputDateFormat();
+            date = this.getDateInDateObject(dateString);
+        } else {
+            date = this.getDateInDateObject(this.state.date);
+        }
+
+        let itemType
+        if (!this.state.formEditMode) {
+            itemType = this.props.itemType;
+        } else {
+            itemType = this.state.itemType;
+        }
+
+        let newItem = {
+            id: itemID,
+            category: category,
+            description: description,
+            date: date,
+            account: this.state.account,
+            itemType: itemType,
+            amount: this.state.amount
+        }
+
+        this.setState({
+            category: "",
+            description: "",
+            date: this.getDateInInputDateFormat(),
+            account: "All",
+            amount: ""
+        });
+
+        return newItem;
+    }
+
+    handleClickOnActionButton = (e) => {
+
+        e.preventDefault();
+
+        let newItem = this.getNewOrEditedItem();
+        if (newItem === undefined) {
+            return;
+        }
+
+        if (this.state.formEditMode) {
+
+            if (typeof this.props.onEditItem === "function") {
+                this.props.onEditItem(newItem);
+                console.log(newItem);
+            } else {
+                return;
+            }
+
+        } else {
+
+            if (typeof this.props.onNewItem === "function") {
+                this.props.onNewItem(newItem);
+            } else {
+                return;
+            }
+
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+
+        if (prevProps.itemEditId !== this.props.itemEditId && this.props.itemEditId !== "") {
+
+            let itemArr = this.props.user.flowItems.filter((el) => {
+                return el.id === this.props.itemEditId;
+            });
+            let item = itemArr[0];
+            console.log(itemArr[0]);
+            console.log(item);
+
+            if (item.description === "-- no description --") {
+                item.description = "";
+            }
+
+            let dateMiliSec = Number(item.date) + 86400000;
+            console.log(item.itemType);
+            this.setState({
+                formEditMode: this.props.formEditMode,
+                category: item.category,
+                description: item.description,
+                date: new Date(dateMiliSec).toISOString().slice(0,10),
+                account: item.account,
+                itemType: item.itemType,
+                amount: item.amount,
+                itemEditId: this.props.itemEditId
+            });
+        }
+    }
+
     render() {
-        console.log(this.props.user);
 
         let formClass;
         if (this.props.showForm) {
             formClass = "cashapp-cashflow-form slide-down"
         } else {
             formClass = "cashapp-cashflow-form"
+        }
+
+        let actionButton;
+        if (this.props.formEditMode) {
+            actionButton = (
+                <button
+                    onClick={ this.handleClickOnActionButton }
+                >
+                    edit
+                </button>
+            )
+        } else {
+            actionButton = (
+                <button
+                    onClick={ this.handleClickOnActionButton }
+                >
+                    add
+                </button>
+            )
         }
 
         return(
@@ -129,7 +285,7 @@ class CashappCashflowForm extends React.Component {
                     />
                 </div>
                 <div>
-                    <button>add</button>
+                    { actionButton }
                     <button
                         onClick={ this.handleClickOnCancel }
                     >/cancel</button>
