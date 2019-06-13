@@ -43,8 +43,7 @@ class Navigation extends React.Component {
 
         let windowHeight = window.innerHeight;
         let positionY = window.pageYOffset;
-        console.log(windowHeight);
-        console.log(positionY);
+
         if (windowHeight < positionY) {
             this.setState({
                 navSticky: true

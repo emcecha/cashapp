@@ -24,7 +24,7 @@ class CashappCashflowItem extends React.Component {
 
         let itemDate = new Date(this.props.item.date).toLocaleDateString();
         let amountStyle;
-        console.log(this.props.itemType);
+        
         if (this.props.itemType === "profit") {
             amountStyle = {color: "#3CAEA3"}
         } else {

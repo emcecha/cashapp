@@ -16,7 +16,7 @@
     }
 
     &__list {
-        overflow-y: scroll;
+        overflow-y: auto;
         flex-grow: 1;
     }
 }

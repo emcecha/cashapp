@@ -92,9 +92,7 @@ class CashappCashflowForm extends React.Component {
         if (!this.state.formEditMode) {
             itemID = new Date().getTime();
         } else {
-            console.log(this.state.itemEditId);
             itemID = this.state.itemEditId;
-            console.log(itemID);
         }
 
         let category;
@@ -160,7 +158,6 @@ class CashappCashflowForm extends React.Component {
 
             if (typeof this.props.onEditItem === "function") {
                 this.props.onEditItem(newItem);
-                console.log(newItem);
             } else {
                 return;
             }
@@ -184,15 +181,13 @@ class CashappCashflowForm extends React.Component {
                 return el.id === this.props.itemEditId;
             });
             let item = itemArr[0];
-            console.log(itemArr[0]);
-            console.log(item);
 
             if (item.description === "-- no description --") {
                 item.description = "";
             }
 
             let dateMiliSec = Number(item.date) + 86400000;
-            console.log(item.itemType);
+
             this.setState({
                 formEditMode: this.props.formEditMode,
                 category: item.category,
