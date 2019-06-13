@@ -6,19 +6,28 @@ class DecorationColumns extends React.Component {
 
         super(props);
         this.state = {
-            iterations: 1
+            iterations: 1,
+            mqlMatch: false
         }
     }
 
     getIterationsCount = () => {
-        let screenSize = window.innerWidth;
-        if (screenSize >= 800) {
+
+        let mql = window.matchMedia("(min-width: 800px)");
+
+        if (this.state.mqlMatch === mql.matches) {
+            return;
+        }
+
+        if (mql.matches) {
             this.setState({
-                iterations: 4
+                iterations: 4,
+                mqlMatch: mql.matches
             });
         } else {
             this.setState({
-                iterations: 1
+                iterations: 1,
+                mqlMatch: mql.matches
             });
         }
     }
@@ -69,13 +78,16 @@ class DecorationColumns extends React.Component {
 
     componentDidMount() {
 
+        let mql = window.matchMedia("(min-width: 800px)");
         this.getIterationsCount();
-        window.addEventListener("resize", this.getIterationsCount);
+        window.matchMedia("(min-width: 800px)")
+        .addListener(this.getIterationsCount);
     }
 
     componentWillUnmount() {
 
-        window.removeEventListener("resize", this.getIterationsCount);
+        window.matchMedia("(min-width: 800px)")
+        .removeListener(this.getIterationsCount);
     }
 }
 
