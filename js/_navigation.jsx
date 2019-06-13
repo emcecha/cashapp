@@ -30,11 +30,18 @@ class Navigation extends React.Component {
     handleItemClick = (e) => {
 
         let id = e.target.dataset.id;
-        let sectionPosition = document.getElementById(id).offsetTop - 60;
 
-        this.setState({
-            show: false
-        });
+        if (!document.getElementById(id)) {
+            return;
+        }
+
+        let sectionPosition = document.getElementById(id).offsetTop - 60;
+        
+        if (this.state.show === true) {
+            this.setState({
+                show: false
+            });
+        }
 
         window.scrollTo(0,sectionPosition);
     }
