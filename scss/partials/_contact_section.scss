@@ -3,7 +3,7 @@
 
     &__container {
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             display: flex;
             justify-content: space-between;
 
@@ -42,7 +42,7 @@
         margin-bottom: 5%;
         border-bottom: 3px solid black;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             font-size: 50px;
             text-align: left;
         }

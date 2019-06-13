@@ -1,5 +1,5 @@
 .header {
-    @media (min-width: 800px) {
+    @include mediaQueries {
         width: 33%;
     }
 
@@ -10,7 +10,7 @@
         text-shadow: -3px 3px 0 $logoFourColor;
         margin-bottom: 10px;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             font-size: 120px;
             text-shadow: -7px 7px 0 $logoFourColor;
             position: relative;
@@ -22,7 +22,7 @@
         font-size: 35px;
         font-weight: 400;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             font-size: 50px;
         }
     }

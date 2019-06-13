@@ -3,7 +3,7 @@
 
     &__items {
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
 
             &--about-app {
                 display: flex;
@@ -64,7 +64,7 @@
         border-bottom: 3px solid black;
         margin-bottom: 5%;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             text-align: left;
             font-size: 50px;
         }
@@ -89,7 +89,7 @@
         font-size: $mobileFontSize;
         font-weight: 700;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             margin-bottom: 5%;
         }
     }

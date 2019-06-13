@@ -4,7 +4,7 @@
     position: fixed;
     z-index: 1;
 
-    @media (min-width: 800px) {
+    @include mediaQueries {
         position: absolute;
         top: 10%;
 
@@ -22,7 +22,7 @@
         cursor: pointer;
         z-index: 2;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             display: none;
         }
     }
@@ -82,7 +82,7 @@
         justify-content: center;
         transition: transform 400ms ease-in-out;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             transform: translateX(0);
             width: auto;
             height: auto;
@@ -113,7 +113,7 @@
         padding: 10px 20px;
         cursor: pointer;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             text-align: left;
             position: relative;
 

@@ -1,6 +1,6 @@
 .contact-other {
 
-    @media (min-width: 800px) {
+    @include mediaQueries {
         width: 47.5%;
     }
 
@@ -10,7 +10,7 @@
         padding: 8% 5%;
         margin-bottom: 8%;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             height: 410px;
             border: none;
             margin-bottom: 0;
@@ -22,7 +22,7 @@
         font-size: $mobileFontSize;
         font-weight: 700;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             margin-bottom: 5%;
         }
     }
@@ -38,7 +38,7 @@
         align-items: center;
         margin-bottom: 8%;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             border-top: 3px solid black;
             padding-top: 5%;
         }

@@ -15,7 +15,7 @@
         align-items: center;
         justify-content: flex-end;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             flex-grow: 0;
             justify-content: center;
             width: 33%;
@@ -26,7 +26,7 @@
         display: flex;
         flex-direction: column;
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             align-items: flex-end;
             justify-content: flex-end;
             width: 60%;
@@ -36,7 +36,7 @@
         .action-field__button-box {
             margin-top: 15px;
 
-            @media (min-width: 800px) {
+            @include mediaQueries {
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-end;
@@ -57,7 +57,7 @@
             position: relative;
             right: 40px;
 
-            @media (min-width: 800px) {
+            @include mediaQueries {
                 position: static;
                 margin-top: 0;
             }
@@ -66,7 +66,7 @@
 
     &--register {
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             display: flex;
             justify-content: flex-end;
             align-self: flex-end;
@@ -80,7 +80,7 @@
 
     &--login {
 
-        @media (min-width: 800px) {
+        @include mediaQueries {
             display: flex;
             justify-content: flex-end;
             align-self: flex-end;

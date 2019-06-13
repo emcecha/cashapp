@@ -17,7 +17,7 @@
             flex-direction: column;
             justify-content: space-between;
 
-            @media (min-width: 800px) {
+            @include mediaQueries {
                 height: 75%;
                 flex-direction: row;
                 justify-content: flex-start;
@@ -27,7 +27,7 @@
         &__bottom {
             height: 50%;
 
-            @media (min-width: 800px) {
+            @include mediaQueries {
                 height: 25%;
             }
         }
@@ -40,12 +40,12 @@
                 .header__subtitle {
                     display: none;
 
-                    @media (min-width: 800px) {
+                    @include mediaQueries {
                         display: block;
                     }
                 }
 
-                @media (min-width: 800px) {
+                @include mediaQueries {
                     height: 75%;
                 }
             }
@@ -53,18 +53,10 @@
             .hero__bottom {
                 height: 20%;
 
-                @media (min-width: 800px) {
+                @include mediaQueries {
                     height: 25%;
                 }
             }
         }
-
-        // @media (min-width: 800px) {
-        //     flex-direction: row;
-        //     flex-wrap: wrap;
-        //     align-items: flex-start;
-        // }
     }
-
-
 }
