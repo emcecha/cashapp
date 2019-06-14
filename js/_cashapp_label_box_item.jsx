@@ -3,22 +3,24 @@ import React from "react";
 class CashappLabelBoxItem extends React.Component {
 
     handleClickOnEditItem = () => {
-        if (typeof this.props.onEditItem === "function") {
-            let item = this.props.name;
-            let option = this.props.option;
-            this.props.onEditItem(item,option);
-        } else {
+
+        if (typeof this.props.onEditItem !== "function") {
             return;
         }
+
+        let item = this.props.name;
+        let option = this.props.option;
+        this.props.onEditItem(item,option);
     }
 
     handleClickOnDeleteItem = () => {
-        if (typeof this.props.onDeleteItem === "function") {
-            let item = this.props.name;
-            this.props.onDeleteItem(item);
-        } else {
+
+        if (typeof this.props.onDeleteItem !== "function") {
             return;
         }
+
+        let item = this.props.name;
+        this.props.onDeleteItem(item);
     }
 
     render() {

@@ -44,16 +44,18 @@ class CashappCashflow extends React.Component {
     }
 
     handleDeleteItem = (deletedItemId) => {
-        if (typeof this.props.onItemChange === "function") {
-            let newItemsArr = this.props.user.flowItems.filter((item) => {
-                return item.id !== deletedItemId;
-            });
-            this.setLocalStorage(newItemsArr);
-            this.handleHideForm();
-            this.props.onItemChange();
-        } else {
+
+        if (typeof this.props.onItemChange !== "function") {
             return;
         }
+
+        let newItemsArr = this.props.user.flowItems.filter((item) => {
+            return item.id !== deletedItemId;
+        });
+
+        this.setLocalStorage(newItemsArr);
+        this.handleHideForm();
+        this.props.onItemChange();
     }
 
     setLocalStorage(element) {
@@ -72,26 +74,35 @@ class CashappCashflow extends React.Component {
     }
 
     handleNewItem = (newItem) => {
-        if (typeof this.props.onItemChange === "function") {
-            let newItemsArr = [...this.props.user.flowItems, newItem];
-            this.setLocalStorage(newItemsArr);
-            this.handleHideForm();
-            this.props.onItemChange();
+
+        if (typeof this.props.onItemChange !== "function") {
+            return;
         }
+
+        let newItemsArr = [...this.props.user.flowItems, newItem];
+
+        this.setLocalStorage(newItemsArr);
+        this.handleHideForm();
+        this.props.onItemChange();
     }
 
     handleSaveItemEdition = (editedItem) => {
-        if (typeof this.props.onItemChange === "function") {
-            let editedItemsArr = this.props.user.flowItems.map((item) => {
-                if (item.id === editedItem.id) {
-                    item = editedItem;
-                }
-                return item;
-            });
-            this.setLocalStorage(editedItemsArr);
-            this.handleHideForm();
-            this.props.onItemChange();
+        if (typeof this.props.onItemChange !== "function") {
+            return;
         }
+
+        let editedItemsArr = this.props.user.flowItems.map((item) => {
+
+            if (item.id === editedItem.id) {
+                item = editedItem;
+            }
+
+            return item;
+        });
+
+        this.setLocalStorage(editedItemsArr);
+        this.handleHideForm();
+        this.props.onItemChange();
     }
 
     render() {

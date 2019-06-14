@@ -37,12 +37,16 @@ class CashappLabelBox extends React.Component {
     }
 
     handleNewItem = (newItem) => {
-        if (typeof this.props.onItemChange === "function") {
-            let newItemsArr = [...this.props.items, newItem];
-            this.setLocalStorage(newItemsArr);
-            this.handleCloseForm();
-            this.props.onItemChange();
+
+        if (typeof this.props.onItemChange !== "function") {
+            return;
         }
+
+        let newItemsArr = [...this.props.items, newItem];
+
+        this.setLocalStorage(newItemsArr);
+        this.handleCloseForm();
+        this.props.onItemChange();
     }
 
     handleCloseForm = () => {
@@ -63,28 +67,36 @@ class CashappLabelBox extends React.Component {
     }
 
     handleSaveItemEdition = (newItem,editedItemName) => {
-        if (typeof this.props.onItemChange === "function") {
-            let editedItemsArr = this.props.items.map((item) => {
-                if (item.name.toLowerCase() === editedItemName.toLowerCase()) {
-                    item = newItem;
-                }
-                return item;
-            });
-            this.setLocalStorage(editedItemsArr);
-            this.handleCloseForm();
-            this.props.onItemChange();
+
+        if (typeof this.props.onItemChange !== "function") {
+            return;
         }
+
+        let editedItemsArr = this.props.items.map((item) => {
+            if (item.name.toLowerCase() === editedItemName.toLowerCase()) {
+                item = newItem;
+            }
+            return item;
+        });
+
+        this.setLocalStorage(editedItemsArr);
+        this.handleCloseForm();
+        this.props.onItemChange();
     }
 
     handleDeleteItem = (deletedItemName) => {
-        if (typeof this.props.onItemChange === "function") {
-            let newItemsArr = this.props.items.filter((item,index,arr) => {
-                return item.name !== deletedItemName;
-            });
-            this.setLocalStorage(newItemsArr);
-            this.handleCloseForm();
-            this.props.onItemChange();
+        
+        if (typeof this.props.onItemChange !== "function") {
+            return;
         }
+
+        let newItemsArr = this.props.items.filter((item,index,arr) => {
+            return item.name !== deletedItemName;
+        });
+
+        this.setLocalStorage(newItemsArr);
+        this.handleCloseForm();
+        this.props.onItemChange();
     }
 
     render() {

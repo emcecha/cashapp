@@ -3,28 +3,30 @@ import React from "react";
 class CashappCashflowItem extends React.Component {
 
     handleClickOnEditItem = () => {
-        if (typeof this.props.onEditItem === "function") {
-            let id = this.props.item.id;
-            this.props.onEditItem(id);
-        } else {
+
+        if (typeof this.props.onEditItem !== "function") {
             return;
         }
+
+        let id = this.props.item.id;
+        this.props.onEditItem(id);
     }
 
     handleClickOnDeleteItem = () => {
-        if (typeof this.props.onDeleteItem === "function") {
-            let id = this.props.item.id;
-            this.props.onDeleteItem(id);
-        } else {
+        
+        if (typeof this.props.onDeleteItem !== "function") {
             return;
         }
+
+        let id = this.props.item.id;
+        this.props.onDeleteItem(id);
     }
 
     render() {
 
         let itemDate = new Date(this.props.item.date).toLocaleDateString();
         let amountStyle;
-        
+
         if (this.props.itemType === "profit") {
             amountStyle = {color: "#3CAEA3"}
         } else {

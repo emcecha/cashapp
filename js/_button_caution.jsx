@@ -6,9 +6,9 @@ class ButtonCaution extends React.Component {
 
         if (typeof this.props.onClick !== "function") {
             return;
-        } else {
-            this.props.onClick(e);
         }
+
+        this.props.onClick(e);
     }
 
     render() {

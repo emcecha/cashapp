@@ -71,19 +71,20 @@ class CashappCashflowForm extends React.Component {
 
         e.preventDefault();
 
-        if (typeof this.props.onCancel === "function") {
-            this.setState({
-                category: "",
-                description: "",
-                date: this.getDateInInputDateFormat(),
-                account: "All",
-                amount: "",
-                itemEditId: ""
-            });
-            this.props.onCancel();
-        } else {
+        if (typeof this.props.onCancel !== "function") {
             return;
         }
+
+        this.setState({
+            category: "",
+            description: "",
+            date: this.getDateInInputDateFormat(),
+            account: "All",
+            amount: "",
+            itemEditId: ""
+        });
+
+        this.props.onCancel();
     }
 
     getNewOrEditedItem() {
@@ -156,20 +157,19 @@ class CashappCashflowForm extends React.Component {
 
         if (this.state.formEditMode) {
 
-            if (typeof this.props.onEditItem === "function") {
-                this.props.onEditItem(newItem);
-            } else {
+            if (typeof this.props.onEditItem !== "function") {
                 return;
             }
+
+            this.props.onEditItem(newItem);
 
         } else {
 
-            if (typeof this.props.onNewItem === "function") {
-                this.props.onNewItem(newItem);
-            } else {
+            if (typeof this.props.onNewItem !== "function") {
                 return;
             }
 
+            this.props.onNewItem(newItem);
         }
     }
 

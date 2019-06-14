@@ -5,10 +5,10 @@ class ButtonBackSmall extends React.Component {
     handleButtonClick = (e) => {
 
         if (typeof this.props.onClick !== "function") {
-            return
-        } else {
-            this.props.onClick(e);
+            return;
         }
+
+        this.props.onClick(e);
     }
 
     render() {

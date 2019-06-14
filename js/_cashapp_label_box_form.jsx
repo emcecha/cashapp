@@ -74,36 +74,38 @@ class CashappLabelBoxForm extends React.Component {
 
         if (this.state.formEditMode) {
 
-            if (typeof this.props.onEditItem === "function") {
-                this.props.onEditItem(newItem,this.props.editedItemName);
-            } else {
+            if (typeof this.props.onEditItem !== "function") {
                 return;
             }
+
+            this.props.onEditItem(newItem,this.props.editedItemName);
 
         } else {
 
-            if (typeof this.props.onNewItem === "function") {
-                this.props.onNewItem(newItem);
-            } else {
+            if (typeof this.props.onNewItem !== "function") {
                 return;
             }
 
+            this.props.onNewItem(newItem);
         }
     }
 
     handleClickOnCloseForm = (e) => {
+
         e.preventDefault();
-        if (typeof this.props.onCloseForm === "function") {
-            this.setState({
-                itemName: "",
-                itemOption: "",
-                editedItemName: "",
-                editedItemOption: ""
-            });
-            this.props.onCloseForm();
-        } else {
+
+        if (typeof this.props.onCloseForm !== "function") {
             return;
         }
+
+        this.setState({
+            itemName: "",
+            itemOption: "",
+            editedItemName: "",
+            editedItemOption: ""
+        });
+
+        this.props.onCloseForm();
     }
 
     componentDidUpdate(prevProps) {
