@@ -1,8 +1,8 @@
 import React from "react";
-import ButtonCaution from "./_button_caution.jsx";
-import ButtonBackSmall from "./_button_back_small.jsx";
+import ButtonCaution from "./buttons/_button_caution.jsx";
+import ButtonBackSmall from "./buttons/_button_back_small.jsx";
 import {Link, Redirect} from 'react-router-dom';
-import User from "./_user.js";
+import User from "../utils/_user.js";
 
 class FormRegister extends React.Component {
 
@@ -62,6 +62,7 @@ class FormRegister extends React.Component {
         }
 
         let newUser = new User(this.state.email, this.state.password);
+        console.log(newUser);
         let usersArray = JSON.parse(localStorage.getItem("users"));
         let newUsersArray = [...usersArray, newUser];
 

@@ -20,6 +20,14 @@ class User {
         ];
         this.flowItems = [];
     }
+
+    validatePassword(value) {
+        if (value === this.password) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 export default User;

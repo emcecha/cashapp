@@ -8,12 +8,11 @@ import {
     NavLink
 } from "react-router-dom";
 import styles from "../scss/main.scss";
-import LandingPage from "./_landing_page.jsx";
-import StartPage from "./_start_page.jsx";
-import RegisterPage from "./_register_page.jsx";
-import LogInPage from "./_login_page.jsx";
-import Cashapp from "./_cashapp.jsx";
-import AppRedirect from "./_app_redirect.jsx";
+import LandingPage from "./page/_landing_page.jsx";
+import StartPage from "./page/_start_page.jsx";
+import RegisterPage from "./page/_register_page.jsx";
+import LogInPage from "./page/_login_page.jsx";
+import Cashapp from "./application/_cashapp.jsx";
 
 document.addEventListener("DOMContentLoaded", () => {
 

@@ -1,7 +1,8 @@
 import React from "react";
-import ButtonAccept from "./_button_accept.jsx";
-import ButtonBackSmall from "./_button_back_small.jsx";
+import ButtonAccept from "./buttons/_button_accept.jsx";
+import ButtonBackSmall from "./buttons/_button_back_small.jsx";
 import {Link} from 'react-router-dom';
+import User from "../utils/_user.js";
 
 class FormLogIn extends React.Component {
 
@@ -47,9 +48,9 @@ class FormLogIn extends React.Component {
                 return alert(`There is no user registered with ${this.state.email} address`);
             }
 
-            user = userArr[0];
+            user = Object.assign(new User, userArr[0]);
 
-            if (user.password !== this.state.password) {
+            if (!user.validatePassword(this.state.password)) {
                 e.preventDefault();
                 return alert("Wrong password");
             }

@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonCaution from "./_button_caution.jsx";
+import ButtonCaution from "./buttons/_button_caution.jsx";
 
 class ContactForm extends React.Component {
 
