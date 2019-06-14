@@ -78,16 +78,14 @@ class DecorationColumns extends React.Component {
 
     componentDidMount() {
 
-        let mql = window.matchMedia("(min-width: 800px)");
+        this.mediaQuery = window.matchMedia("(min-width: 800px)");
         this.getIterationsCount();
-        window.matchMedia("(min-width: 800px)")
-        .addListener(this.getIterationsCount);
+        this.mediaQuery.addListener(this.getIterationsCount);
     }
 
     componentWillUnmount() {
 
-        window.matchMedia("(min-width: 800px)")
-        .removeListener(this.getIterationsCount);
+        this.mediaQuery.removeListener(this.getIterationsCount);
     }
 }
 

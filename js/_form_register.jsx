@@ -16,24 +16,10 @@ class FormRegister extends React.Component {
         }
     }
 
-    handleEmailChange = (e) => {
+    handleInputChange = (e) => {
 
         this.setState({
-            email: e.target.value
-        });
-    }
-
-    handlePasswordChange = (e) => {
-
-        this.setState({
-            password: e.target.value
-        });
-    }
-
-    handleRepeatPasswordChange = (e) => {
-
-        this.setState({
-            repeatPassword: e.target.value
+            [e.target.name]: e.target.value
         });
     }
 
@@ -94,7 +80,7 @@ class FormRegister extends React.Component {
                         type="email"
                         name="email"
                         value={ this.state.email }
-                        onChange={ this.handleEmailChange }
+                        onChange={ this.handleInputChange }
                     />
                 </div>
                 <div className="form__input-box">
@@ -104,7 +90,7 @@ class FormRegister extends React.Component {
                         type="password"
                         name="password"
                         value={ this.state.password }
-                        onChange={ this.handlePasswordChange }
+                        onChange={ this.handleInputChange }
                     />
                 </div>
                 <div className="form__input-box">
@@ -112,9 +98,9 @@ class FormRegister extends React.Component {
                     <input
                         className="form__input form__input--password"
                         type="password"
-                        name="repeat-password"
+                        name="repeatPassword"
                         value={ this.state.repeatPassword }
-                        onChange={ this.handleRepeatPasswordChange }
+                        onChange={ this.handleInputChange }
                     />
                 </div>
                 <div className="form__button-box form__button-box--flex">

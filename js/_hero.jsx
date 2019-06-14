@@ -7,11 +7,14 @@ class Hero extends React.Component {
 
     render() {
 
-        let classMod;
-        if (this.props.address === "landing") { classMod = "hero--landing"; };
-        if (this.props.address === "start") { classMod = "hero--st-reg-log"; };
-        if (this.props.address === "register") { classMod = "hero--st-reg-log"; };
-        if (this.props.address === "login") { classMod = "hero--st-reg-log"; };
+        let classValues = {
+            landing: "hero--landing",
+            start: "hero--st-reg-log",
+            register: "hero--st-reg-log",
+            login: "hero--st-reg-log"
+        }
+
+        let classMod = classValues[this.props.address];
 
         return(
             <div
