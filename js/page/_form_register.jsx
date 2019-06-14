@@ -62,7 +62,6 @@ class FormRegister extends React.Component {
         }
 
         let newUser = new User(this.state.email, this.state.password);
-        console.log(newUser);
         let usersArray = JSON.parse(localStorage.getItem("users"));
         let newUsersArray = [...usersArray, newUser];
 

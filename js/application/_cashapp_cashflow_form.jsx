@@ -175,29 +175,49 @@ class CashappCashflowForm extends React.Component {
 
     componentDidUpdate(prevProps) {
 
-        if (prevProps.itemEditId !== this.props.itemEditId && this.props.itemEditId !== "") {
+        console.log(prevProps);
+        console.log(this.props.itemEditId);
 
-            let itemArr = this.props.user.flowItems.filter((el) => {
-                return el.id === this.props.itemEditId;
-            });
-            let item = itemArr[0];
+        if (prevProps.itemEditId !== this.props.itemEditId) {
 
-            if (item.description === "-- no description --") {
-                item.description = "";
+            if (this.props.itemEditId === "") {
+
+                this.setState({
+                    formEditMode: this.props.formEditMode,
+                    category: "",
+                    description: "",
+                    date: this.getDateInInputDateFormat(),
+                    account: "All",
+                    amount: "",
+                    itemType: "",
+                    itemEditId: this.props.itemEditId
+                });
+
+            } else {
+
+                let itemArr = this.props.user.flowItems.filter((el) => {
+                    return el.id === this.props.itemEditId;
+                });
+                let item = itemArr[0];
+
+                if (item.description === "-- no description --") {
+                    item.description = "";
+                }
+
+                let dateMiliSec = Number(item.date) + 86400000;
+
+                this.setState({
+                    formEditMode: this.props.formEditMode,
+                    category: item.category,
+                    description: item.description,
+                    date: new Date(dateMiliSec).toISOString().slice(0,10),
+                    account: item.account,
+                    itemType: item.itemType,
+                    amount: item.amount,
+                    itemEditId: this.props.itemEditId
+                });
+
             }
-
-            let dateMiliSec = Number(item.date) + 86400000;
-
-            this.setState({
-                formEditMode: this.props.formEditMode,
-                category: item.category,
-                description: item.description,
-                date: new Date(dateMiliSec).toISOString().slice(0,10),
-                account: item.account,
-                itemType: item.itemType,
-                amount: item.amount,
-                itemEditId: this.props.itemEditId
-            });
         }
     }
 
