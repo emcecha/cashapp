@@ -42,7 +42,7 @@ class ActionField extends React.Component {
                         </Link>
                     </div>
                     <div className="action-field__button-box">
-                        <Link to="/cashapp">
+                        <Link to="/">
                             <ButtonBackSmall text="BACK" />
                         </Link>
                     </div>
