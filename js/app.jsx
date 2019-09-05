@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return(
                 <HashRouter>
                     <Switch>
-                        <Route exact path="/cashapp" component={ LandingPage } />
+                        <Route exact path="/" component={ LandingPage } />
                         <Route exact path="/cashapp/start" component={ StartPage } />
                         <Route exact path="/cashapp/start/register" component={ RegisterPage } />
                         <Route exact path="/cashapp/start/login" component={ LogInPage } />
